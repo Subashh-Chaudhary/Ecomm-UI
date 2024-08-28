@@ -8,6 +8,7 @@ import AllProductsPage from "../pages/products";
 import ContactPage from "../pages/contact";
 import HomePageLayout from "../pages/layout/home.page";
 import AdminLayout from "../pages/layout/cms.page";
+import ProductDetails from "../components/productDetails";
 
 const RouterConfig = () => {
   return (
@@ -19,7 +20,7 @@ const RouterConfig = () => {
             <Route path="about" element={<AboutPage />} />
             <Route path="categories" element={<AllCategoriesPage />} />
             <Route path="products" element={<AllProductsPage />} />
-            <Route path="products/:slug" element={<>Product Details page</>} />
+            <Route path="products/:slug" element={<ProductDetails />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LoginPage />} />

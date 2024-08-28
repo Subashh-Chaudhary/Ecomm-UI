@@ -1,4 +1,5 @@
 import {Navbar } from "flowbite-react";
+import { NavLink } from "react-router-dom";
 export const HomeHeader = () => {
   return (
     <>
@@ -15,8 +16,8 @@ export const HomeHeader = () => {
         </Navbar.Brand>
         <div className="flex md:order-2">
           <Navbar.Collapse>
-            <Navbar.Link href="/register">Register</Navbar.Link>
-            <Navbar.Link href="/login">Login</Navbar.Link>
+            <NavLink to="/register" className={({isActive}: {isActive:boolean}) =>(isActive? 'block text-orange-600': 'block text-gray-700')}>Register</NavLink>
+            <NavLink to="/login" className={({isActive}: {isActive:boolean}) =>(isActive? 'block text-orange-600': 'block text-gray-700')}>Login</NavLink>
           </Navbar.Collapse>
           {/* <Dropdown
             arrowIcon={false}
@@ -44,13 +45,11 @@ export const HomeHeader = () => {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse >
-          <Navbar.Link href="/" className="text-sm md:text-xl lg:text-[17px]"  active>
-            Home
-          </Navbar.Link>
-          <Navbar.Link href="/about" className="text-sm md:text-xl lg:text-[17px]"  >About</Navbar.Link>
-          <Navbar.Link href="/categories" className="text-sm md:text-xl lg:text-[17px]"  >Categories</Navbar.Link>
-          <Navbar.Link href="/products" className="text-sm md:text-xl lg:text-[17px]"  >All Products</Navbar.Link>
-          <Navbar.Link href="/contact" className="text-sm md:text-xl lg:text-[17px]"  >Contact</Navbar.Link>
+          <NavLink to="/" className={({isActive}: {isActive:boolean}) =>(isActive? 'block text-orange-600': 'block text-gray-700')}>Home</NavLink>
+          <NavLink to="/about" className={({isActive}: {isActive:boolean}) =>(isActive? 'block text-orange-600': 'block text-gray-700')}>About</NavLink>
+          <NavLink to="/categories" className={({isActive}: {isActive:boolean}) =>(isActive? 'block text-orange-600': 'block text-gray-700')}>Categories</NavLink>
+          <NavLink to="/products" className={({isActive}: {isActive:boolean}) =>(isActive? 'block text-orange-600': 'block text-gray-700')}>All Products</NavLink>
+          <NavLink to="/contact" className={({isActive}: {isActive:boolean}) =>(isActive? 'block text-orange-600': 'block text-gray-700')}>Contact</NavLink>
         </Navbar.Collapse>
       </Navbar>
     </>
