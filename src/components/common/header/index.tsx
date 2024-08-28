@@ -1,4 +1,4 @@
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import {Navbar } from "flowbite-react";
 export const HomeHeader = () => {
   return (
     <>
@@ -14,7 +14,11 @@ export const HomeHeader = () => {
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
-          <Dropdown
+          <Navbar.Collapse>
+            <Navbar.Link href="/register">Register</Navbar.Link>
+            <Navbar.Link href="/login">Login</Navbar.Link>
+          </Navbar.Collapse>
+          {/* <Dropdown
             arrowIcon={false}
             inline
             label={
@@ -36,17 +40,17 @@ export const HomeHeader = () => {
             <Dropdown.Item>Earnings</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item>Sign out</Dropdown.Item>
-          </Dropdown>
+          </Dropdown> */}
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse >
-          <Navbar.Link href="#" className="text-sm md:text-xl lg:text-[17px]"  active>
+          <Navbar.Link href="/" className="text-sm md:text-xl lg:text-[17px]"  active>
             Home
           </Navbar.Link>
-          <Navbar.Link href="#" className="text-sm md:text-xl lg:text-[17px]"  >About</Navbar.Link>
-          <Navbar.Link href="#" className="text-sm md:text-xl lg:text-[17px]"  >Services</Navbar.Link>
-          <Navbar.Link href="#" className="text-sm md:text-xl lg:text-[17px]"  >Pricing</Navbar.Link>
-          <Navbar.Link href="#" className="text-sm md:text-xl lg:text-[17px]"  >Contact</Navbar.Link>
+          <Navbar.Link href="/about" className="text-sm md:text-xl lg:text-[17px]"  >About</Navbar.Link>
+          <Navbar.Link href="/categories" className="text-sm md:text-xl lg:text-[17px]"  >Categories</Navbar.Link>
+          <Navbar.Link href="/products" className="text-sm md:text-xl lg:text-[17px]"  >All Products</Navbar.Link>
+          <Navbar.Link href="/contact" className="text-sm md:text-xl lg:text-[17px]"  >Contact</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </>
