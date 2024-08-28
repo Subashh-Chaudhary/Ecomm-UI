@@ -1,6 +1,7 @@
 import { Banner } from "./components/banner";
 import CategoryComponent from "./components/category";
 import { HomeHeader } from "./components/common/header";
+import Product from "./components/product";
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <HomeHeader />
       <Banner />
       <CategoryComponent />
+      <Product />
     </>
   );
 };
