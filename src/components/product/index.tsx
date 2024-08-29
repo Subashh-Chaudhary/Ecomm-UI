@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import ProductCard from "./productCard";
 import { SingleSlider } from "../common/slider/__contracts/slider.contract";
 
@@ -9,7 +9,7 @@ const Product = () => {
     // API call
     const response: Array<SingleSlider> = [
       {
-        _id: "",
+        _id: "p001",
         title: "Metal Octopus-Shaped Scalp Head Massager Scratcher",
         rating: "3",
         image:
@@ -18,7 +18,7 @@ const Product = () => {
         link: "",
       },
       {
-        _id: "",
+        _id: "p002",
         title: "Creative Iron Door Hanging Hook Wall Clothes Hanger Rack",
         rating: "5",
         image:
@@ -27,7 +27,7 @@ const Product = () => {
         link: "",
       },
       {
-        _id: "",
+        _id: "p003",
         title:
           "4 Stage Knife Sharpener Manual Kitchen Knife Sharpening Tool For All Knives",
         rating: "3",
@@ -37,7 +37,7 @@ const Product = () => {
         link: "",
       },
       {
-        _id: "",
+        _id: "p004",
         title: "Qi Yi Cube Rubik's Cube 3x3",
         rating: "5",
         image:
@@ -46,7 +46,7 @@ const Product = () => {
         link: "",
       },
       {
-        _id: "",
+        _id: "p005",
         title:
           "Motorcycle Phone Holder Bike Mobile Holder for Pathao Metal Body",
         rating: "2",
@@ -56,7 +56,7 @@ const Product = () => {
         link: "",
       },
       {
-        _id: "",
+        _id: "p006",
         title: "Printed Messenger Bag For Women",
         rating: "2",
         image:

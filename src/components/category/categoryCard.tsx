@@ -25,6 +25,7 @@ export const CategoryCard = ({ data }: { data: Array<SingleSlider> }) => {
             </a>
           ) : (
                     <Card
+                    key={i}
                     className="w-32 lg:w-48 h-44 lg:h-64 cursor-pointer hover:shadow-2xl"
                     renderImage={() => (
                       <img

@@ -9,6 +9,7 @@ import ContactPage from "../pages/contact";
 import HomePageLayout from "../pages/layout/home.page";
 import AdminLayout from "../pages/layout/cms.page";
 import ProductDetails from "../components/productDetails";
+import ErrorComponent from "../components/error/error.component";
 
 const RouterConfig = () => {
   return (
@@ -24,7 +25,7 @@ const RouterConfig = () => {
             <Route path="contact" element={<ContactPage />} />
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LoginPage />} />
-            <Route path="*" element={<>404 page not found</>} />
+            <Route path="*" element={<ErrorComponent/>} />
           </Route>
 
           <Route path="/admin" element={<AdminLayout />}>
