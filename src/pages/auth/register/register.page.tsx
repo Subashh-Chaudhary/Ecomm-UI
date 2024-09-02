@@ -1,4 +1,4 @@
-import registration from "../../../assets/images/registration.png"
+import registration from "../../../assets/images/registration.png";
 const RegisterPage = () => {
   return (
     <>
@@ -10,7 +10,7 @@ const RegisterPage = () => {
 */}
 
       <section className="bg-white">
-        <div className="lg:grid lg:h-[600px] lg:grid-cols-12">
+        <div className="lg:grid lg:h-full lg:grid-cols-12">
           <aside className="relative block h-16 lg:order-last lg:col-span-2 lg:h-full xl:col-span-6">
             <img
               alt=""
@@ -40,23 +40,6 @@ const RegisterPage = () => {
                     className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                   />
                 </div>
-
-                <div className="col-span-6 sm:col-span-6">
-                  <label
-                    htmlFor="Address"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Address
-                  </label>
-
-                  <input
-                    type="text"
-                    id="Address"
-                    name="Address"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                  />
-                </div>
-
 
                 <div className="col-span-6">
                   <label
@@ -107,21 +90,72 @@ const RegisterPage = () => {
                     className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                   />
                 </div>
+                <div className="col-span-6">
+                  <label
+                    htmlFor="Address"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    {" "}
+                    Address{" "}
+                  </label>
+
+                  <textarea
+                    id="Address"
+                    name="address"
+                    style={{ resize: "none" }}
+                    rows={3}
+                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                  ></textarea>
+                </div>
 
                 <div className="col-span-6">
-                  <label htmlFor="MarketingAccept" className="flex gap-4">
-                    <input
-                      type="checkbox"
-                      id="MarketingAccept"
-                      name="marketing_accept"
-                      className="size-5 rounded-md border-gray-200 bg-white shadow-sm"
-                    />
+                  <label
+                    htmlFor="Role"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    {" "}
+                    Role{" "}
+                  </label>
 
+                  <select
+                    id="Role"
+                    name="role"
+                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                  >
+                    <option value="customer">Customer</option>
+                    <option value="Vendor">Vendor</option>
+                  </select>
+                </div>
+                <div className="col-span-6">
+                  <label
+                    htmlFor="Image"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    {" "}
+                    Image{" "}
+                  </label>
+
+                  <input
+                  id="Image"
+                  name="image"
+                    className="mt-1 w-full rounded-md bg-white text-sm text-gray-700 shadow-sm border border-gray-200"
+                    aria-describedby="user_avatar_help"
+                    type="file"
+                  />
+                  <div
+                    className="mt-1 text-sm text-gray-500 dark:text-gray-300"
+                    id="user_avatar_help"
+                  >
+                    A profile picture is useful to confirm your are logged into
+                    your account
+                  </div>
+                </div>
+
+                <div className="col-span-6">
                     <span className="text-sm text-gray-700">
                       I want to receive emails about events, product updates and
                       company announcements.
                     </span>
-                  </label>
                 </div>
                 <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
                   <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
@@ -129,7 +163,7 @@ const RegisterPage = () => {
                   </button>
 
                   <p className="mt-4 text-sm text-gray-500 sm:mt-0">
-                    Already have an account? {" "}
+                    Already have an account?{" "}
                     <a href="#" className="text-gray-700 underline">
                       Log in
                     </a>

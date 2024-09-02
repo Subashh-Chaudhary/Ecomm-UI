@@ -21,7 +21,7 @@ const RouterConfig = () => {
             <Route path="about" element={<AboutPage />} />
             <Route path="categories" element={<AllCategoriesPage />} />
             <Route path="products" element={<AllProductsPage />} />
-            <Route path="products/:slug" element={<ProductDetails />} />
+            <Route path="product" element={<ProductDetails />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LoginPage />} />

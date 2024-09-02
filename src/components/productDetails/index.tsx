@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { SingleSlider } from "../common/slider/__contracts/slider.contract";
 import ErrorComponent from "../error/error.component";
 
@@ -81,27 +81,30 @@ const ProductDetails = () => {
   };
 
   // using useParams()
-  const params = useParams();
-  console.log(params);
-  const product = response.find((p) => p._id === params.slug);
-  console.log(product);
+  // const params = useParams();
+  // console.log(params);
+  // const product = response.find((p) => p._id === params.slug);
+  // console.log(product);
 
   // Find the product with the matching slug
+
+  // if (!product) {
+  //   return <ErrorComponent />
+  // }
+
+  // using useSearchParams()
+  const [searchParams] = useSearchParams();
+  console.log(searchParams);
+  const id = searchParams.get('id'); 
+  // Get the 'id' query parameter from the URL
+  console.log(id)
+
+  // Find the product with the matching id
+  const product = response.find((p) => p._id === id);
 
   if (!product) {
     return <ErrorComponent />
   }
-
-  // using useSearchParams()
-  // const [searchParams] = useSearchParams();
-  // const id = searchParams.get('id'); // Get the 'id' query parameter from the URL
-
-  // // Find the product with the matching id
-  // const product = response.find((p) => p._id === id);
-
-  // if (!product) {
-  //   return <div>Product not found</div>;
-  // }
 
   return (
     <>
