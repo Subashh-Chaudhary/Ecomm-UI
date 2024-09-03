@@ -6,7 +6,8 @@ const RegisterPage = () => {
   Heads up! 👋
 
   Plugins:
-    - @tailwindcss/forms
+    - @tailwindcss/form
+    register page
 */}
 
       <section className="bg-white">
