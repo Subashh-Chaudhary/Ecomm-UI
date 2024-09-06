@@ -2,9 +2,9 @@ import registration from "../../../assets/images/registration.png";
 
 const RegisterPage = () => {
   return (
-    <>
-      <section className="bg-white">
-        <div className="lg:grid lg:h-screen lg:grid-cols-12">
+    <div className="flex flex-col min-h-screen">
+      <section className="flex-grow bg-white">
+        <div className="lg:grid lg:h-screen lg:grid-cols-12 lg:mx-36">
           <aside className="relative hidden lg:block lg:col-span-6 xl:col-span-7">
             <img
               alt="Registration"
@@ -24,6 +24,7 @@ const RegisterPage = () => {
               </p>
 
               <form action="#" className="mt-8 space-y-6">
+                {/* Form Fields */}
                 <div>
                   <label
                     htmlFor="FullName"
@@ -174,7 +175,7 @@ const RegisterPage = () => {
           </main>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

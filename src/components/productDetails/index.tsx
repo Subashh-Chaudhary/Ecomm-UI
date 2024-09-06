@@ -292,11 +292,6 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      {/* <div className="bg-gradient-to-r from-gray-600 via-gray-900 to-gray-900 w-full h-[400px]">
-        <div className="w-[1200px] h-full mx-auto flex gap-4 bg-slate-300">
-          fsdj
-        </div>
-      </div> */}
     </>
   );
 };
