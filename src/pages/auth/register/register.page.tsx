@@ -1,176 +1,174 @@
 import registration from "../../../assets/images/registration.png";
+
 const RegisterPage = () => {
   return (
     <>
-      {/*
-  Heads up! 👋
-
-  Plugins:
-    - @tailwindcss/form
-    register page
-*/}
-
       <section className="bg-white">
-        <div className="lg:grid lg:h-full lg:grid-cols-12">
-          <aside className="relative block h-16 lg:order-last lg:col-span-2 lg:h-full xl:col-span-6">
+        <div className="lg:grid lg:h-screen lg:grid-cols-12">
+          <aside className="relative hidden lg:block lg:col-span-6 xl:col-span-7">
             <img
-              alt=""
+              alt="Registration"
               src={registration}
               className="absolute inset-0 h-full w-full object-cover"
             />
           </aside>
 
-          <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-6 lg:px-16 lg:py-12 xl:col-span-5">
-            <div className="max-w-xl lg:max-w-3xl">
-              <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+          <main className="flex items-center justify-center px-6 py-12 sm:px-12 lg:col-span-6 xl:col-span-5">
+            <div className="w-full max-w-lg lg:max-w-2xl">
+              <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
                 Welcome to Project E-com UI
               </h1>
-              <form action="#" className="mt-8 grid grid-cols-6 gap-6">
-                <div className="col-span-6 sm:col-span-6">
+
+              <p className="mt-4 text-gray-600 sm:mt-6">
+                Please fill in the form to create an account.
+              </p>
+
+              <form action="#" className="mt-8 space-y-6">
+                <div>
                   <label
                     htmlFor="FullName"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Full Name
                   </label>
-
                   <input
                     type="text"
                     id="FullName"
                     name="first_name"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Your full name"
                   />
                 </div>
 
-                <div className="col-span-6">
+                <div>
                   <label
                     htmlFor="Email"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    {" "}
-                    Email{" "}
+                    Email
                   </label>
-
                   <input
                     type="email"
                     id="Email"
                     name="email"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Your email"
                   />
                 </div>
 
-                <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="Password"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    {" "}
-                    Password{" "}
-                  </label>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="Password"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      id="Password"
+                      name="password"
+                      className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      placeholder="Password"
+                    />
+                  </div>
 
-                  <input
-                    type="password"
-                    id="Password"
-                    name="password"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                  />
+                  <div>
+                    <label
+                      htmlFor="PasswordConfirmation"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Confirm Password
+                    </label>
+                    <input
+                      type="password"
+                      id="PasswordConfirmation"
+                      name="password_confirmation"
+                      className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      placeholder="Confirm password"
+                    />
+                  </div>
                 </div>
 
-                <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="PasswordConfirmation"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Password Confirmation
-                  </label>
-
-                  <input
-                    type="password"
-                    id="PasswordConfirmation"
-                    name="password_confirmation"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                  />
-                </div>
-                <div className="col-span-6">
+                <div>
                   <label
                     htmlFor="Address"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    {" "}
-                    Address{" "}
+                    Address
                   </label>
-
                   <textarea
                     id="Address"
                     name="address"
-                    style={{ resize: "none" }}
                     rows={3}
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                  ></textarea>
+                    className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Your address"
+                  />
                 </div>
 
-                <div className="col-span-6">
+                <div>
                   <label
                     htmlFor="Role"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    {" "}
-                    Role{" "}
+                    Role
                   </label>
-
                   <select
                     id="Role"
                     name="role"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                    className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   >
                     <option value="customer">Customer</option>
-                    <option value="Vendor">Vendor</option>
+                    <option value="vendor">Vendor</option>
                   </select>
                 </div>
-                <div className="col-span-6">
+
+                <div>
                   <label
                     htmlFor="Image"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    {" "}
-                    Image{" "}
+                    Profile Image
                   </label>
-
                   <input
-                  id="Image"
-                  name="image"
-                    className="mt-1 w-full rounded-md bg-white text-sm text-gray-700 shadow-sm border border-gray-200"
-                    aria-describedby="user_avatar_help"
+                    id="Image"
+                    name="image"
                     type="file"
+                    className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
-                  <div
-                    className="mt-1 text-sm text-gray-500 dark:text-gray-300"
-                    id="user_avatar_help"
-                  >
-                    A profile picture is useful to confirm your are logged into
-                    your account
-                  </div>
-                </div>
-
-                <div className="col-span-6">
-                    <span className="text-sm text-gray-700">
-                      I want to receive emails about events, product updates and
-                      company announcements.
-                    </span>
-                </div>
-                <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                  <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
-                    Create an account
-                  </button>
-
-                  <p className="mt-4 text-sm text-gray-500 sm:mt-0">
-                    Already have an account?{" "}
-                    <a href="#" className="text-gray-700 underline">
-                      Log in
-                    </a>
-                    .
+                  <p className="mt-2 text-sm text-gray-500">
+                    A profile picture is useful to confirm your identity.
                   </p>
                 </div>
+
+                <div className="flex items-center">
+                  <input
+                    id="newsletter"
+                    type="checkbox"
+                    className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                  />
+                  <label
+                    htmlFor="newsletter"
+                    className="ml-2 block text-sm text-gray-700"
+                  >
+                    I want to receive emails about events, updates, and
+                    announcements.
+                  </label>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <button className="w-full rounded-md bg-indigo-600 py-2 px-4 text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    Create an account
+                  </button>
+                </div>
+
+                <p className="mt-4 text-sm text-gray-500 text-center">
+                  Already have an account?{" "}
+                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                    Log in
+                  </a>
+                  .
+                </p>
               </form>
             </div>
           </main>

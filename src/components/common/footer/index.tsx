@@ -9,12 +9,13 @@ import {
   BsTwitter,
 } from "react-icons/bs";
 
-const FooterPage = ()=> {
+const FooterPage = () => {
   return (
-    <Footer container className="w-[1400px] flex mx-auto">
+    <Footer container className="w-full px-4 py-6 lg:px-12 mx-auto bg-white">
       <div className="w-full">
-        <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-          <div>
+        {/* Main content */}
+        <div className="grid w-full sm:grid-cols-2 md:grid-cols-3 lg:flex lg:justify-between lg:items-center">
+          <div className="mb-6 lg:mb-0">
             <Footer.Brand
               href="https://flowbite.com"
               src="https://flowbite.com/docs/images/logo.svg"
@@ -22,9 +23,11 @@ const FooterPage = ()=> {
               name="Flowbite"
             />
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+          
+          {/* Links */}
+          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-2 md:grid-cols-3">
             <div>
-              <Footer.Title title="about" />
+              <Footer.Title title="About" />
               <Footer.LinkGroup col>
                 <Footer.Link href="#">Flowbite</Footer.Link>
                 <Footer.Link href="#">Tailwind CSS</Footer.Link>
@@ -46,7 +49,11 @@ const FooterPage = ()=> {
             </div>
           </div>
         </div>
-        <Footer.Divider />
+
+        {/* Divider */}
+        <Footer.Divider className="my-6" />
+
+        {/* Copyright and Social Icons */}
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright href="#" by="Flowbite™" year={2022} />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
@@ -62,4 +69,4 @@ const FooterPage = ()=> {
   );
 }
 
-export default FooterPage
+export default FooterPage;
