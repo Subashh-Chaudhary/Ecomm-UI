@@ -81,7 +81,7 @@ const Product = () => {
           View All
         </p>
       </div>
-      <div className="flex gap-4 mx-2 lg:mx-12 mt-2 lg:mt-6 flex-wrap  justify-center mb-20">
+      <div className="flex gap-4 mx-2 lg:mx-12 mt-2 lg:mt-6 flex-wrap  justify-center mb-5 md:mb-13">
         <ProductCard data={allProduct} />
       </div>
     </>

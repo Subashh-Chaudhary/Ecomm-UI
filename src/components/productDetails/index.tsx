@@ -109,21 +109,21 @@ const ProductDetails = () => {
   return (
     <>
       <h1>Product Details:</h1>
-      <div className="bg-gradient-to-r from-gray-600 via-gray-900 to-gray-900 md:h-[580px] w-full">
-        <div className="w-[1200px] h-full mx-auto flex gap-4">
-          <div className="h-full w-2/3 relative">
-            <div className="w-4/5 ms-14 overflow-hidden">
+        <div className="w-full grid lg:grid-cols-5 gap-4">
+          <div className="md:col-span-3  flex justify-center flex-col items-center">
+          <div
+          className="max-w-[340px] lg:max-w-[500px] rounded-md overflow-hidden">
               <img
-                className=" object-contain hover:scale-105 "
+                className=" object-contain lg:hover:scale-105"
                 src={product.image}
                 alt="watch"
               />
-            </div>
-            <div className="flex gap-32 absolute bottom-8 left-1/2 -translate-x-1/2">
-              <div className="bg-white w-10 h-10 grid items-center justify-center rounded-full rotate-90 shrink-0 cursor-pointer">
+              </div>
+            <div className="flex justify-center gap-5 lg:gap-24 mt-2">
+              <div className="bg-gray-600 w-10 h-10 grid items-center justify-center rounded-full rotate-90 shrink-0 cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 fill-[#333] inline"
+                  className="w-4 fill-[#fff] inline"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -134,10 +134,10 @@ const ProductDetails = () => {
                   ></path>
                 </svg>
               </div>
-              <div className="bg-white w-10 h-10 grid items-center justify-center rounded-full -rotate-90 shrink-0 cursor-pointer">
+              <div className="bg-gray-600 w-10 h-10 grid items-center justify-center rounded-full -rotate-90 shrink-0 cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 fill-[#333] inline"
+                  className="w-4 fill-[#fff] inline"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -150,54 +150,25 @@ const ProductDetails = () => {
               </div>
             </div>
           </div>
-          <div className="h-full w-1/2">
-            <div className="lg:col-span-2 bg-gray-100 py-6 px-8 h-[580px] w-[400px]">
+          <div className="md:col-span-2">
+            <div className="w-full bg-gray-100 py-6 px-8  max-w-[400px]">
               <div>
                 <h2 className="text-2xl font-bold text-gray-800">
                   {product.title}
                 </h2>
 
                 <div className="flex space-x-1 mt-2">
-                  <svg
-                    className="w-4 fill-gray-800"
-                    viewBox="0 0 14 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                  </svg>
-                  <svg
-                    className="w-4 fill-gray-800"
-                    viewBox="0 0 14 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                  </svg>
-                  <svg
-                    className="w-4 fill-gray-800"
-                    viewBox="0 0 14 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                  </svg>
-                  <svg
-                    className="w-4 fill-gray-800"
-                    viewBox="0 0 14 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                  </svg>
-                  <svg
-                    className="w-4 fill-[#CED5D8]"
-                    viewBox="0 0 14 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                  </svg>
+                {[...Array(5)].map((_, index) => (
+              <svg
+                key={index}
+                className={`h-5 w-5 ${index < Math.round(Number(product.rating)) ? 'text-yellow-300' : 'text-gray-300'}`}
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
                 </div>
               </div>
               <div className="mt-8">
@@ -291,7 +262,6 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

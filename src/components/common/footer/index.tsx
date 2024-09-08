@@ -11,7 +11,7 @@ import {
 
 const FooterPage = () => {
   return (
-    <Footer container className="w-full px-4 py-6 lg:px-12 mx-auto bg-white">
+    <Footer container className="w-full px-5 lg:px-12 mx-auto bg-white">
       <div className="w-full">
         {/* Main content */}
         <div className="grid w-full sm:grid-cols-2 md:grid-cols-3 lg:flex lg:justify-between lg:items-center">

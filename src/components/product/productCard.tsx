@@ -1,5 +1,6 @@
 import { Card } from "flowbite-react";
 import { SingleSlider } from "../common/slider/__contracts/slider.contract";
+import { NavLink } from "react-router-dom";
 
 const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
   // Define the maximum length for the title
@@ -20,9 +21,10 @@ const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
       {processedData && processedData.map((row: SingleSlider, i: number) => (
+        <NavLink to={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}>
         <Card
           key={i}
-          className="w-full max-w-[150px] md:max-w-[250px] hover:shadow-2xl transition-shadow duration-300 ease-in-out"
+          className="w-full h-72 sm:h-auto max-w-[150px] md:max-w-[250px] hover:shadow-2xl transition-shadow duration-300 ease-in-out"
         >
           <div className="relative w-full">
             <img
@@ -32,7 +34,7 @@ const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
             />
           </div>
           <a href={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}>
-            <h5 className="text-xs md:text-sm lg:text-base font-semibold tracking-tight text-gray-900 dark:text-white mt-2">
+            <h5 className="text-xs md:text-sm lg:text-base font-semibold tracking-tight text-gray-900 dark:text-white sm:mt-2">
               {row.title}
             </h5>
           </a>
@@ -64,6 +66,7 @@ const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
             </a>
           </div>
         </Card>
+        </NavLink>
       ))}
     </div>
   );
