@@ -1,17 +1,19 @@
 import { useForm } from "react-hook-form";
 import registration from "../../../assets/images/registration.png";
-import InputText from "../../../components/common/form/inputText.componet";
+import {InputLabel, RoleSelectComponent, TextAreaInput, TextInput} from "../../../components/common/form/TextInput.componet";
 
 const RegisterPage = () => {
   const {control, handleSubmit, setValue, formState: {errors}} =useForm({
-    defaultValues:{
-
-    }
+    
   })
 
-  const submitForm = (data:any) =>{
-    // TODO: Api call
+  const submitForm = (datas:any)=>{
+    // API call
+    console.log("Datas :", datas)
   }
+
+  console.log("Error :", errors)
+
   return (
     <div className="flex flex-col min-h-screen">
       <section className="flex-grow bg-white">
@@ -36,107 +38,84 @@ const RegisterPage = () => {
 
               <form onSubmit={handleSubmit(submitForm)} className="mt-8 space-y-3">
                 {/* Form Fields */}
-                <InputText label="Full Name" control={control}/>
-
+                {/* <InputText label="Full Name" control={control}/> */}
                 <div>
-                  <label
-                    htmlFor="Email"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    // {
-                    //   ...register("email", {required: true})
-                    // }
-                    className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm"
-                  />
+                <InputLabel htmlFor="fullName">Full name</InputLabel>
+                    <TextInput 
+                      name="fullName" 
+                      errMsg={errors?.name?.message as string} 
+                      required={true} 
+                      control={control}/>
                 </div>
+                
+                <div>
+                <InputLabel htmlFor="email">Email</InputLabel>
+                  <TextInput
+                    name="Email" 
+                    type="email"
+                    errMsg={errors?.email?.message as string} 
+                    required={true} 
+                    control={control}/>
+                </div>
+
+                
 
                 <div className="grid gap-2 md:gap-6 grid-cols-2">
                   <div>
-                    <label
-                      htmlFor="Password"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Password
-                    </label>
-                    <input
+                  <InputLabel htmlFor="password">Password</InputLabel>
+                    <TextInput
+                      name="password" 
                       type="password"
-                      id="Password"
-                      name="password"
-                      className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm"
-                      placeholder="Password"
-                    />
+                      errMsg={errors?.password?.message as string} 
+                      required={true} 
+                      control={control}/>
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="PasswordConfirmation"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Confirm Password
-                    </label>
-                    <input
+                  <InputLabel htmlFor="confirmPassword">Confirm Password</InputLabel>
+                    <TextInput
+                      name="confirmPassword" 
                       type="password"
-                      id="PasswordConfirmation"
-                      name="password_confirmation"
-                      className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm"
-                      placeholder="Confirm password"
-                    />
+                      errMsg={errors?.confirmassword?.message as string} 
+                      required={true} 
+                      control={control}/>
                   </div>
                 </div>
 
                 <div className="grid gap-2 md:gap-6 grid-cols-5">
                 <div
                 className="col-span-3">
-                  <label
-                    htmlFor="Address"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Address
-                  </label>
-                  <textarea
-                    id="Address"
-                    name="address"
-                    rows={1}
-                    className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm"
-                    placeholder="Your address"
-                  />
+                  <InputLabel htmlFor="address">Address</InputLabel>
+                  <TextAreaInput
+                   name="address"
+                   errMsg={errors?.textArea?.message as string} 
+                   required={true} 
+                   control={control}/> 
                 </div>
 
                 <div
                 className="col-span-2">
-                  <label
-                    htmlFor="Role"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Role
-                  </label>
-                  <select
-                    id="Role"
-                    name="role"
-                    className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm"
-                  >
-                    <option value="customer">Customer</option>
-                    <option value="vendor">Vendor</option>
-                  </select>
+                  <InputLabel htmlFor="role">Role</InputLabel>
+                  <RoleSelectComponent 
+                  name="role"
+                  errMsg={errors?.role?.message as string} 
+                  required={true} 
+                  control={control}/>
                 </div>
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="Image"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Profile Image
-                  </label>
+                  <InputLabel htmlFor="image">Image</InputLabel>
                   <input
-                    id="Image"
                     name="image"
                     type="file"
                     className="mt-1 w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    onChange={
+                      (e:any) => {
+                        const image = e.target.files['0'];
+                        setValue('image', image);
+                      }
+                    }
                   />
                   <p className="mt-2 text-sm text-gray-500">
                     A profile picture is useful to confirm your identity.

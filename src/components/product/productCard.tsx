@@ -21,9 +21,8 @@ const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
       {processedData && processedData.map((row: SingleSlider, i: number) => (
-        <NavLink to={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}>
+        <NavLink key={i} to={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}>
         <Card
-          key={i}
           className="w-full h-72 sm:h-auto max-w-[150px] md:max-w-[250px] hover:shadow-2xl transition-shadow duration-300 ease-in-out"
         >
           <div className="relative w-full">
