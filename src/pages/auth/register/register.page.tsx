@@ -7,10 +7,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 const RegisterPage = () => {
   const registerDTO = Yup.object({
     name: Yup.string().min(2).max(50).required(),
-    phone: Yup.number()
-    .typeError('Phone number must be a valid number')
-    .min(1000000000, 'Phone number must be at least 10 digits')
-    .max(99999999999, 'Phone number must be at most 12 digits')
+    phone: Yup.string()
+    .matches(/^(?:\+977[-\s]?)?98|97\d{8}$/, 'Phone number must be valid')
+    .required('Phone number is required')
+    .min(10,'Phone number must be at least 10 digits')
+    .max(12,'Phone number must be at most 12 digits')
     .required(),
     email: Yup.string().email().required(),
     address: Yup.string().min(5).max(50).required(),
