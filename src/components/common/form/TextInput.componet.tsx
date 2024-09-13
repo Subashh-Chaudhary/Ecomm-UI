@@ -15,15 +15,11 @@ export const TextInput = ({
   control,
   name,
   errMsg,
-  type = "text",
-  required = true,
+  type,
 }: InputTextInterface) => {
   const { field } = useController({
     control: control,
     name: name,
-    // rules: {
-    //   required: required,
-    // },
   });
   return (
     <div>
@@ -34,6 +30,31 @@ export const TextInput = ({
           errMsg ? "border-red-700 border-2" : "border-gray-300"
         } shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm`}
       />
+      <small className="text-red-900">{errMsg}</small>
+    </div>
+  );
+};
+
+export const PasswordInput = ({
+  control,
+  name,
+  errMsg,
+  autocomplete
+}: InputTextInterface) => {
+  const { field } = useController({
+    control: control,
+    name: name,
+  });
+  return (
+    <div>
+      <input
+        type="password"
+        {...field}
+        className={`mt-1 w-full rounded-md ${
+          errMsg ? "border-red-700 border-2" : "border-gray-300"
+        } shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm`}
+        autoComplete={autocomplete}
+      />
       <small className="text-red-900 ">{errMsg}</small>
     </div>
   );
@@ -42,15 +63,11 @@ export const TextInput = ({
 export const TextAreaInput = ({
   control,
   name,
-  errMsg, rows=2,
-  required = true,
+  errMsg, rows,
 }: InputTextInterface) => {
   const { field } = useController({
     control: control,
     name: name,
-    // rules: {
-    //   required: required,
-    // },
   });
   return (
     <div>
@@ -63,20 +80,17 @@ export const TextAreaInput = ({
         className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm"
         placeholder="Your address"
       />
-      <small className="text-red-900 ">{errMsg}</small>
+      <small className="text-red-900 leading-none">{errMsg}</small>
     </div>
   );
 };
 
 
-export const SelectOptionsComponent = ({options, control, name, required=false, errMsg}:SelectOptionPros)=>{
+export const SelectOptionsComponent = ({options, control, name, errMsg}:SelectOptionPros)=>{
   const {field} = useController(
     {
       name: name,
       control: control,
-      // rules: {
-      //   required: required
-      // }
     }
   )
   return(
@@ -95,12 +109,12 @@ export const SelectOptionsComponent = ({options, control, name, required=false, 
           
         }    
       </select>
-      <small className="text-red-900 ">{errMsg}</small>
+      <small className="text-red-900 leading-none">{errMsg}</small>
     </>
   )
 }
 
-export const RoleSelectComponent =({control, name, required=false, errMsg}: SelectOptionPros)=>{
+export const RoleSelectComponent =({control, name, errMsg}: SelectOptionPros)=>{
   return(
     <>
       <SelectOptionsComponent 
@@ -112,7 +126,6 @@ export const RoleSelectComponent =({control, name, required=false, errMsg}: Sele
       } 
       control={control}
       name={name}
-      required={required}
       errMsg={errMsg}
       />
     </>

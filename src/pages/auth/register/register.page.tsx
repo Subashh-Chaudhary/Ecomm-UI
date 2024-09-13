@@ -1,14 +1,20 @@
 import { useForm } from "react-hook-form";
 import registration from "../../../assets/images/registration.png";
-import {InputLabel, RoleSelectComponent, TextAreaInput, TextInput} from "../../../components/common/form/TextInput.componet";
+import {InputLabel, PasswordInput, RoleSelectComponent, TextAreaInput, TextInput} from "../../../components/common/form/TextInput.componet";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const RegisterPage = () => {
   const registerDTO = Yup.object({
     name: Yup.string().min(2).max(50).required(),
+    phone: Yup.number()
+    .typeError('Phone number must be a valid number')
+    .min(1000000000, 'Phone number must be at least 10 digits')
+    .max(99999999999, 'Phone number must be at most 12 digits')
+    .required(),
     email: Yup.string().email().required(),
-    password: Yup.string().matches(/^(?=.*[\d])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W])(?!.* ).{8,25}$/).required(),
+    address: Yup.string().min(5).max(50).required(),
+    password: Yup.string().matches(/^(?=.*[\d])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W])(?!.* ).{8,25}$/, "Password must contain uppercase letter, a lowercase letter, a number, a special character, and be 8-25 characters long.").required(),
     confirmPassword: Yup.string().oneOf([Yup.ref('password')], "Password and Confirm Password should match"),
     role: Yup.string().matches(/^(seller|customer)$/).default('customer'),
     image: Yup.mixed()
@@ -50,22 +56,33 @@ const RegisterPage = () => {
               <form onSubmit={handleSubmit(submitForm)} className="mt-8 space-y-3">
                 {/* Form Fields */}
                 {/* <InputText label="Full Name" control={control}/> */}
-                <div>
-                <InputLabel htmlFor="fullName">Full name</InputLabel>
-                    <TextInput 
-                      name="fullName" 
-                      errMsg={errors?.name?.message as string} 
-                      required={true} 
-                      control={control}/>
+                <div className="grid gap-2 md:gap-6 grid-cols-2">
+                  <div>
+                      <InputLabel htmlFor="name">Full name</InputLabel>
+                          <TextInput 
+                            name="name" 
+                            type="text"
+                            errMsg={errors?.name?.message as string}
+                            control={control}/>
+                  </div>
+
+                  <div>
+                      <InputLabel htmlFor="phone">Phone</InputLabel>
+                          <TextInput 
+                            name="phone" 
+                            type="text"
+                            errMsg={errors?.phone?.message as string}
+                            control={control}/>
+                    </div>
                 </div>
+                
                 
                 <div>
                 <InputLabel htmlFor="email">Email</InputLabel>
                   <TextInput
-                    name="Email" 
+                    name="email" 
                     type="email"
                     errMsg={errors?.email?.message as string} 
-                    required={true} 
                     control={control}/>
                 </div>
 
@@ -74,22 +91,25 @@ const RegisterPage = () => {
                 <div className="grid gap-2 md:gap-6 grid-cols-2">
                   <div>
                   <InputLabel htmlFor="password">Password</InputLabel>
-                    <TextInput
+                    <PasswordInput
                       name="password" 
                       type="password"
                       errMsg={errors?.password?.message as string} 
-                      required={true} 
-                      control={control}/>
+                      control={control}
+                      autocomplete="new-password"
+                      />
+                      
                   </div>
 
                   <div>
                   <InputLabel htmlFor="confirmPassword">Confirm Password</InputLabel>
-                    <TextInput
+                    <PasswordInput
                       name="confirmPassword" 
                       type="password"
-                      errMsg={errors?.confirmassword?.message as string} 
-                      required={true} 
-                      control={control}/>
+                      errMsg={errors?.confirmPassword?.message as string} 
+                      control={control}
+                      autocomplete="new-password"
+                      />
                   </div>
                 </div>
 
@@ -99,8 +119,8 @@ const RegisterPage = () => {
                   <InputLabel htmlFor="address">Address</InputLabel>
                   <TextAreaInput
                    name="address"
-                   errMsg={errors?.textArea?.message as string} 
-                   required={true} 
+                   errMsg={errors?.address?.message as string}
+                   rows={2}
                    control={control}/> 
                 </div>
 
@@ -109,8 +129,8 @@ const RegisterPage = () => {
                   <InputLabel htmlFor="role">Role</InputLabel>
                   <RoleSelectComponent 
                   name="role"
+                  
                   errMsg={errors?.role?.message as string} 
-                  required={true} 
                   control={control}/>
                 </div>
                 </div>
