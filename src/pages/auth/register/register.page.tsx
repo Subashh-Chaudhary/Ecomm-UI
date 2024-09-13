@@ -1,10 +1,21 @@
 import { useForm } from "react-hook-form";
 import registration from "../../../assets/images/registration.png";
 import {InputLabel, RoleSelectComponent, TextAreaInput, TextInput} from "../../../components/common/form/TextInput.componet";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const RegisterPage = () => {
+  const registerDTO = Yup.object({
+    name: Yup.string().min(2).max(50).required(),
+    email: Yup.string().email().required(),
+    password: Yup.string().matches(/^(?=.*[\d])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W])(?!.* ).{8,25}$/).required(),
+    confirmPassword: Yup.string().oneOf([Yup.ref('password')], "Password and Confirm Password should match"),
+    role: Yup.string().matches(/^(seller|customer)$/).default('customer'),
+    image: Yup.mixed()
+  })
+
   const {control, handleSubmit, setValue, formState: {errors}} =useForm({
-    
+    resolver: yupResolver(registerDTO)
   })
 
   const submitForm = (datas:any)=>{
