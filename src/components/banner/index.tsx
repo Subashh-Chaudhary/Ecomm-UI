@@ -48,7 +48,7 @@ export const Banner = () => {
 
   return (
     <>
-      <div className="h-36 lg:h-64 xl:h-80 2xl:h-[500px]">
+      <div className="h-36 lg:h-64 xl:h-80 2xl:h-[500px] lg:mx-28">
         <SliderComponent data={bannerData} />
       </div>
     </>

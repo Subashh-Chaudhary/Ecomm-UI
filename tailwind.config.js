@@ -8,7 +8,11 @@ export default {
     'node_modules/flowbite-react/lib/esm/**/*.js'
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#F85606', // Your custom primary color
+      },
+    },
   },
   plugins: [
     flowbite.plugin(),

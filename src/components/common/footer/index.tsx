@@ -1,5 +1,6 @@
 "use client";
 
+import logo from "../../../assets/images/logo.png";
 import { Footer } from "flowbite-react";
 import {
   BsDribbble,
@@ -11,26 +12,21 @@ import {
 
 const FooterPage = () => {
   return (
-    <Footer container className="w-full px-5 lg:px-12 mx-auto bg-white">
+    <Footer container className="w-full px-5 lg:px-28 mx-auto bg-white">
       <div className="w-full">
-        {/* Main content */}
         <div className="grid w-full sm:grid-cols-2 md:grid-cols-3 lg:flex lg:justify-between lg:items-center">
-          <div className="mb-6 lg:mb-0">
-            <Footer.Brand
-              href="https://flowbite.com"
-              src="https://flowbite.com/docs/images/logo.svg"
-              alt="Flowbite Logo"
-              name="Flowbite"
-            />
+          <div className="mb-6 lg:mb-0 cursor-pointer">
+            <img 
+            className= " w-16 h-10 lg:w-32 lg:h-24 bg-slate-600 rounded"
+            src={logo} alt="" />
           </div>
           
-          {/* Links */}
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-2 md:grid-cols-3">
             <div>
               <Footer.Title title="About" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Flowbite</Footer.Link>
-                <Footer.Link href="#">Tailwind CSS</Footer.Link>
+                <Footer.Link href="#">Offers</Footer.Link>
+                <Footer.Link href="#">Service</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
@@ -55,7 +51,7 @@ const FooterPage = () => {
 
         {/* Copyright and Social Icons */}
         <div className="w-full sm:flex sm:items-center sm:justify-between">
-          <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+          <Footer.Copyright href="#" by="SajiloCart" year={2022} />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <Footer.Icon href="#" icon={BsFacebook} />
             <Footer.Icon href="#" icon={BsInstagram} />

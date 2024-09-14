@@ -3,6 +3,8 @@ import registration from "../../../assets/images/registration.png";
 import {InputLabel, PasswordInput, RoleSelectComponent, TextAreaInput, TextInput} from "../../../components/common/form/TextInput.componet";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axiosInstance from "../../../Config/axios.config";
+import authSvc from "../auto.service";
 
 const RegisterPage = () => {
   const registerDTO = Yup.object({
@@ -25,12 +27,15 @@ const RegisterPage = () => {
     resolver: yupResolver(registerDTO)
   })
 
-  const submitForm = (datas:any)=>{
-    // API call
-    console.log("Datas :", datas)
+  const submitForm = async (data:any)=>{
+    try{
+      const response = await authSvc.postRequest('/users/add', data);
+      console.log("Response: ", response)
+    }
+    catch(exception){
+      console.log("Failed: ", exception);
+    }
   }
-
-  console.log("Error :", errors)
 
   return (
     <div className="flex flex-col min-h-screen">

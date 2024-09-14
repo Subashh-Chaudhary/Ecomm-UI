@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
   // Define the maximum length for the title
-  const maxLength: number = 40;
+  const maxLength: number = 30;
 
   // Process data to truncate titles
   const processedData: Array<SingleSlider> = data.map((item: SingleSlider) => {
@@ -22,8 +22,9 @@ const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
       {processedData && processedData.map((row: SingleSlider, i: number) => (
         <NavLink key={i} to={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}>
+        
         <Card
-          className="w-full h-72 sm:h-auto max-w-[150px] md:max-w-[250px] hover:shadow-2xl transition-shadow duration-300 ease-in-out"
+          className="w-full sm:h-auto max-w-[150px] md:max-w-[250px] hover:shadow-2xl transition-shadow duration-300 ease-in-out"
         >
           <div className="relative w-full">
             <img
@@ -32,12 +33,12 @@ const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
               alt={row.title}
             />
           </div>
-          <a href={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}>
+          <NavLink to={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}>
             <h5 className="text-xs md:text-sm lg:text-base font-semibold tracking-tight text-gray-900 dark:text-white sm:mt-2">
               {row.title}
             </h5>
-          </a>
-          <div className="flex items-center md:mt-2">
+          </NavLink>
+          <div className="flex items-center">
             {[...Array(5)].map((_, index) => (
               <svg
                 key={index}
@@ -53,7 +54,7 @@ const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
               {row.rating}
             </span>
           </div>
-          <div className="flex items-cente gap-2 justify-between md:mt-2">
+          <div className="flex items-cente gap-2 justify-between">
             <span className="text-sm md:text-md lg:text-lg font-bold text-gray-900 dark:text-white">
               ${row.price}
             </span>

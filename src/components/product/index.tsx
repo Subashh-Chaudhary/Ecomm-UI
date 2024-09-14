@@ -1,6 +1,7 @@
 import {useEffect, useState } from "react";
 import ProductCard from "./productCard";
 import { SingleSlider } from "../common/slider/__contracts/slider.contract";
+import HomeTitle from "../common/title/homeTitle.component";
 
 const Product = () => {
   const [allProduct, setAllProduct] = useState([] as Array<SingleSlider>);
@@ -74,14 +75,8 @@ const Product = () => {
   }, []);
   return (
     <>
-      
-      <div className="flex justify-between mt-16 mb-3 mx-2 lg:mx-12 border-b-2 border-teal-900/30 border-solid pb-2">
-        <h3 className="  text-2xl font-bold text-teal-700 ">Just for you</h3>
-        <p className="px-1 lg:px-5 py-1 lg:py-2 bg-teal-200 rounded-lg font-bold cursor-pointer">
-          View All
-        </p>
-      </div>
-      <div className="flex gap-4 mx-2 lg:mx-12 mt-2 lg:mt-6 flex-wrap  justify-center mb-5 md:mb-13">
+      <HomeTitle title="Products" />
+      <div className="flex gap-4 mx-2 lg:mx-28 mt-2 lg:mt-6 flex-wrap  justify-center mb-5 md:mb-13">
         <ProductCard data={allProduct} />
       </div>
     </>
