@@ -10,10 +10,13 @@ import HomePageLayout from "../pages/layout/home.page";
 import AdminLayout from "../pages/layout/cms.page";
 import ProductDetails from "../components/productDetails";
 import ErrorComponent from "../components/error/error.component";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/ReactToastify.css"
 
 const RouterConfig = () => {
   return (
     <>
+    <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePageLayout />}>

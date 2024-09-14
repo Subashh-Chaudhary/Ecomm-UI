@@ -3,8 +3,8 @@ import registration from "../../../assets/images/registration.png";
 import {InputLabel, PasswordInput, RoleSelectComponent, TextAreaInput, TextInput} from "../../../components/common/form/TextInput.componet";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axiosInstance from "../../../Config/axios.config";
 import authSvc from "../auto.service";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const registerDTO = Yup.object({
@@ -29,12 +29,15 @@ const RegisterPage = () => {
 
   const submitForm = async (data:any)=>{
     try{
-      const response = await authSvc.postRequest('/users/add', data);
+      const response:any = await authSvc.postRequest('/users/add', data);
       console.log("Response: ", response)
+      toast.success("Account created successfully...")
     }
-    catch(exception){
+    catch(exception:any){
       console.log("Failed: ", exception);
+      toast.error(exception.data.message)
     }
+    
   }
 
   return (
