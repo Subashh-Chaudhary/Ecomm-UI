@@ -48,7 +48,9 @@ const RegisterPage = () => {
       toast.error(exception.data.message);
     }
     finally{
-      setLoading(false);
+      setTimeout(() =>{
+        setLoading(false);
+      }, 800)
     }
     
   }

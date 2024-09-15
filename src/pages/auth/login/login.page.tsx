@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Checkbox, Label,} from "flowbite-react";
+import {Checkbox, Label,} from "flowbite-react";
 import {
   InputLabel,
   PasswordInput,
@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import BasicLoading from "../../../components/loading/loading.component";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
@@ -32,7 +33,7 @@ const LoginPage = () => {
     resolver: yupResolver(registerDTO),
   }); 
 
-  const submitForm = (data: any) => {
+  const submitForm = () => {
     try{
       // TODO: POST-API call
 
@@ -46,7 +47,9 @@ const LoginPage = () => {
       console.error(exception);
     }
     finally{
-      setLoading(false);
+      setTimeout(() =>{
+        setLoading(false);
+      }, 800)
     }
     
   };
@@ -87,10 +90,16 @@ const LoginPage = () => {
             <Label htmlFor="remember"
             className="">Remember me</Label>
           </div>
-          <Button 
+          <button 
           type="submit"
+          className="w-full rounded-md bg-indigo-600 py-2 px-4 text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:scale-95 transition-transform duration-150 ease-in-out "
           disabled = {loading}
-          >Submit</Button>
+          >
+            { 
+            loading ? <BasicLoading label="Account Logging..."/> : 'Submit'
+          }
+          </button>
+                    
         </form>
       </section>
     </>
