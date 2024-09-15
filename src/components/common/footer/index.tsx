@@ -21,6 +21,7 @@ const FooterPage = () => {
             src={logo} alt="" />
           </div>
           
+
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-2 md:grid-cols-3">
             <div>
               <Footer.Title title="About" />
@@ -63,6 +64,6 @@ const FooterPage = () => {
       </div>
     </Footer>
   );
-}
+};
 
 export default FooterPage;
