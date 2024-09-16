@@ -60,7 +60,7 @@ const LoginPage = () => {
       <section className="flex justify-center items-center max-h-96 mb-4 lg:mb-12">
           
         <form
-          className="flex max-w-[600px] bg-slate-50 flex-col  flex-grow px-3 lg:px-7 py-4 lg:py-9 mx-5 rounded-md shadow-2xl"
+          className="flex max-w-[400px] flex-col  flex-grow px-3 lg:px-7 py-4 lg:py-9 mx-5 rounded-md shadow-2xl"
           onSubmit={handleSubmit(submitForm)}
         >
           <div>

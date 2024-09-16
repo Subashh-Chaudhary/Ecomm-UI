@@ -1,10 +1,10 @@
 
-const AllCategoriesPage = ()=>{
-          return(
-                    <>
-                    <h1>AllCategories Page</h1>
-                    </>
-          )
+const AllCategoriesPage = () =>{
+  return (
+    <>
+          All Categories page
+    </>
+  );
 }
 
 export default AllCategoriesPage;

@@ -76,6 +76,7 @@ const RegisterPage = () => {
               <p className="mt-4 text-gray-600 sm:mt-6">
                 Please fill in the form to create an account.
               </p>
+              <hr className="border-t-2 border-solid border-slate-500 opacity-50"/>
 
               <form onSubmit={handleSubmit(submitForm)} className="mt-8 space-y-3">
                 {/* Form Fields */}
