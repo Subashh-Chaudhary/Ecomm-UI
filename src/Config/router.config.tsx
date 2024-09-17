@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "../app";
 import {RegisterPage, LoginPage} from "../pages/auth";
-import AboutPage from "../pages/about";
+import CartPage from "../pages/about";
 import AllCategoriesPage from "../pages/categories";
 import AllProductsPage from "../pages/products";
 import ContactPage from "../pages/contact";
@@ -20,7 +20,7 @@ const RouterConfig = () => {
         <Routes>
           <Route path="/" element={<HomePageLayout />}>
             <Route index element={<App />} />
-            <Route path="about" element={<AboutPage />} />
+            <Route path="cart" element={<CartPage/>} />
             <Route path="categories" element={<AllCategoriesPage />} />
             <Route path="products" element={<AllProductsPage />} />
             <Route path="product" element={<ProductDetails />} />

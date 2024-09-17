@@ -27,9 +27,10 @@ export const TextInput = ({
       <input
         type={type}
         {...field}
-        className={`mt-1 w-full rounded-md ${
-          errMsg ? "border-red-700 border-2" : "border-gray-300"
-        } shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm`}
+        className={`block w-full p-3 text-black placeholder-gray-500 transition-all duration-200 border rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600 ${
+          errMsg ? "border-red-700 border-2" : "border-gray-200"
+        } placeholder-gray-500 transition-all duration-200 border rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600`}
+        placeholder={name == "email"? "Enter email to get started": ""}
       />
       <small className="text-red-900">{errMsg ? errMsg : "\u00A0"}</small>
     </div>
@@ -58,10 +59,11 @@ export const PasswordInput = ({
       <input
         type={passwordVisible ? "text" : "password"}
         {...field}
-        className={`mt-1 w-full rounded-md ${
-          errMsg ? "border-red-700 border-2" : "border-gray-300"
-        } shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-[15px] sm:text-sm`}
+        className={`block w-full p-3 text-black  ${
+          errMsg ? "border-red-700 border-2" : "border-gray-200"
+        } placeholder-gray-500 transition-all duration-200 border rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600`}
         autoComplete={autocomplete}
+        placeholder="Enter your password"
       />
       <button
         type="button"

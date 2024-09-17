@@ -1,40 +1,56 @@
 import { Card } from "flowbite-react";
-import { SingleSlider } from "../common/slider/__contracts/slider.contract";
 import { NavLink } from "react-router-dom";
+import { ProductInterface, ProductProps } from "./product.contract";
 
-const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
+const ProductCard = ({ data, isInHomePage }: ProductProps) => {
   // Define the maximum length for the title
   const maxLength: number = 30;
 
   // Process data to truncate titles
-  const processedData: Array<SingleSlider> = data.map((item: SingleSlider) => {
-    const truncatedTitle = item.title.length > maxLength
-      ? item.title.substring(0, maxLength - 2) + "..."
-      : item.title;
-
-    return {
-      ...item,
-      title: truncatedTitle
-    };
-  });
+  let processedData: ProductInterface[];
+  if(isInHomePage){
+    const slicedData = data.slice(0, 12);
+    processedData = slicedData.map((item: ProductInterface) => {
+      const truncatedTitle = item.title.length > maxLength
+        ? item.title.substring(0, maxLength - 2) + "..."
+        : item.title;
+      data
+      return {
+        ...item,
+        title: truncatedTitle
+      };
+    });
+  }
+  else{
+    processedData = data.map((item: ProductInterface) => {
+      const truncatedTitle = item.title.length > maxLength
+        ? item.title.substring(0, maxLength - 2) + "..."
+        : item.title;
+      data
+      return {
+        ...item,
+        title: truncatedTitle
+      };
+    });
+  }
 
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-      {processedData && processedData.map((row: SingleSlider, i: number) => (
-        <NavLink key={i} to={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}>
+      {processedData && processedData.map((row: ProductInterface, i: number) => (
+        <NavLink key={i} to={`/product?id=${row.id}&title=${encodeURIComponent(row.title)}`}>
         
         <Card
           className="w-full sm:h-auto max-w-[150px] md:max-w-[250px] hover:shadow-2xl transition-shadow duration-300 ease-in-out"
         >
           <div className="relative w-full">
             <img
-              className="object-cover w-full h-full"
-              src={row.image}
+              className="object-cover w-full h-36"
+              src={row.images[0]}
               alt={row.title}
             />
           </div>
-          <NavLink to={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}>
-            <h5 className="text-xs md:text-sm lg:text-base font-semibold tracking-tight text-gray-900 dark:text-white sm:mt-2">
+          <NavLink to={`/product?id=${row.id}&title=${encodeURIComponent(row.title)}`}>
+            <h5 className="text-[14px] md:text-sm lg:text-base font-semibold tracking-tight text-gray-900 dark:text-white sm:mt-2 lg:h-10">
               {row.title}
             </h5>
           </NavLink>
@@ -54,17 +70,17 @@ const ProductCard = ({ data }: { data: Array<SingleSlider> }) => {
               {row.rating}
             </span>
           </div>
-          <div className="flex items-cente gap-2 justify-between">
-            <span className="text-sm md:text-md lg:text-lg font-bold text-gray-900 dark:text-white">
+          <div className="flex items-center gap-1 lg:gap-2 justify-between">
+            <span className="text-[12px] md:text-sm lg:text-[15px] font-bold text-gray-900 dark:text-white">
               ${row.price}
             </span>
-            <a
-              href={`/product?id=${row._id}&title=${encodeURIComponent(row.title)}`}
-              className="rounded-lg bg-cyan-700 px-1 md:px-3 py-1 md:py-1 text-[10px] md:text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
+            <NavLink
+              to={`/product?id=${row.id}&title=${encodeURIComponent(row.title)}`}
+              className="rounded-lg bg-cyan-700 px-[6px] lg:px-2 md:px-3 py-3 md:py-2 text-[9px] md:text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
             >
-              Add to Cart
-            </a>
-          </div>
+              Add Cart
+            </NavLink>
+          </div>  
         </Card>
         </NavLink>
       ))}

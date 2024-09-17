@@ -66,11 +66,11 @@ export const HomeHeader = () => {
             All Products
           </NavLink>
           <NavLink 
-            to="/about" 
+            to="/cart" 
             className={({ isActive }) => 
               isActive ? 'block text-slate-700 ' : 'block text-white hover:text-orange-300'
             }>
-            About
+            My Cart
           </NavLink>
           <NavLink 
             to="/contact" 
