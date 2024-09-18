@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "../app";
 import {RegisterPage, LoginPage} from "../pages/auth";
-import CartPage from "../pages/about";
+import CartPage from "../pages/cart";
 import AllCategoriesPage from "../pages/categories";
 import AllProductsPage from "../pages/products";
 import ContactPage from "../pages/contact";
@@ -11,10 +11,12 @@ import ProductDetails from "../components/productDetails";
 import ErrorComponent from "../components/error/error.component";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.css"
+import { DataProvider } from "../contexts/dataContext";
 
 const RouterConfig = () => {
   return (
     <>
+    <DataProvider>
     <ToastContainer />
       <BrowserRouter>
         <Routes>
@@ -35,6 +37,7 @@ const RouterConfig = () => {
           </Route>
         </Routes>
       </BrowserRouter>
+    </DataProvider>
     </>
   );
 };

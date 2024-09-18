@@ -14,7 +14,7 @@ const HomeTitle = ({title, url}:HomeTitleProps) => {
         </h3>
         <p className="px-1 lg:px-5 py-1 lg:py-2 text-sm lg:text-md bg-primary text-white rounded-lg font-bold cursor-pointer hover:text-white hover:bg-slate-700">
           <NavLink
-          to = {url}>
+          to={url || "#"}>
             View All
           </NavLink>
           
