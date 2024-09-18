@@ -9,7 +9,7 @@ const ProductCard = ({ data, isInHomePage }: ProductProps) => {
   // Process data to truncate titles
   let processedData: ProductInterface[];
   if(isInHomePage){
-    const slicedData = data.slice(0, 12);
+    const slicedData = data.slice(0, 18);
     processedData = slicedData.map((item: ProductInterface) => {
       const truncatedTitle = item.title.length > maxLength
         ? item.title.substring(0, maxLength - 2) + "..."

@@ -4,7 +4,7 @@ import { ProductInterface } from "./contract/product.api";
 
 export const fetchProducts = async () => {
   try {
-    const response:any = await authSvc.getRequest("/products?limit=60");
+    const response:any = await authSvc.getRequest("/products");
     const data:ProductInterface[] = await response.products;
     return data;
   } catch (error) {
@@ -15,7 +15,7 @@ export const fetchProducts = async () => {
 export const fetchAllCategories = async () => {
   try {
     const response:any = await authSvc.getRequest("/products/categories");
-    const data:CategoriesInterface = await response;
+    const data:CategoriesInterface[] = await response;
     return data;
   } catch (error) {
     console.error("Error fetching Categories:", error);

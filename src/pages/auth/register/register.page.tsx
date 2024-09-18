@@ -160,24 +160,6 @@ const RegisterPage = () => {
                 </div>
                 </div>
 
-                <div>
-                  <InputLabel htmlFor="image">Image</InputLabel>
-                  <input
-                    name="image"
-                    type="file"
-                    className="mt-1 w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    onChange={
-                      (e:any) => {
-                        const image = e.target.files['0'];
-                        setValue('image', image);
-                      }
-                    }
-                  />
-                  <p className="mt-2 text-sm text-gray-500">
-                    A profile picture is useful to confirm your identity.
-                  </p>
-                </div>
-
                 <div className="flex items-center">
                   <input
                     id="newsletter"

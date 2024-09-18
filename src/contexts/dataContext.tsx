@@ -13,11 +13,7 @@ interface DataProviderProps {
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [product, setProduct] = useState<ProductInterface[]>([]);
-  const [category, setCategory] = useState<CategoriesInterface>({
-    slug: "",
-    name: "",
-    url: "",
-  });
+  const [category, setCategory] = useState<CategoriesInterface[]>([]);
 
   useEffect(() => {
     const getProduct = async () => {

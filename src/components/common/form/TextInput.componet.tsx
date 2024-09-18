@@ -1,7 +1,7 @@
 import { useController } from "react-hook-form";
 import { InputTextInterface, OptionType, SelectOptionPros } from "./contract.form";
 import { InputLabelProps } from "./contract.form";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export const InputLabel = ({children, htmlFor}: InputLabelProps)=>{
   return(<>
@@ -22,6 +22,19 @@ export const TextInput = ({
     control: control,
     name: name,
   });
+
+  const [placeholder, setPlaceholder] = useState("");
+  useEffect(() => {
+    if (name === "name") {
+      setPlaceholder("Enter your name");
+    } else if (name === "phone") {
+      setPlaceholder("Phone number");
+    } else if (name === "email") {
+      setPlaceholder("Enter your email");
+    } else {
+      setPlaceholder("");
+    }
+  }, [name]);
   return (
     <div>
       <input
@@ -30,7 +43,7 @@ export const TextInput = ({
         className={`block w-full p-3 text-black placeholder-gray-500 transition-all duration-200 border rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600 ${
           errMsg ? "border-red-700 border-2" : "border-gray-200"
         } placeholder-gray-500 transition-all duration-200 border rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600`}
-        placeholder={name == "email"? "Enter email to get started": ""}
+        placeholder={placeholder}
       />
       <small className="text-red-900">{errMsg ? errMsg : "\u00A0"}</small>
     </div>
@@ -53,6 +66,18 @@ export const PasswordInput = ({
     control: control,
     name: name,
   });
+
+  const [placeholder, setPlaceholder] = useState("");
+  useEffect(() => {
+    if (name === "password") {
+      setPlaceholder("Enter your password")
+    }
+      else if (name === "confirmPassword") {
+      setPlaceholder("Confirm password");
+    } else {
+      setPlaceholder("");
+    }
+  }, [name]);
   return (
     <div 
     className="relative">
@@ -63,7 +88,7 @@ export const PasswordInput = ({
           errMsg ? "border-red-700 border-2" : "border-gray-200"
         } placeholder-gray-500 transition-all duration-200 border rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600`}
         autoComplete={autocomplete}
-        placeholder="Enter your password"
+        placeholder={placeholder}
       />
       <button
         type="button"
