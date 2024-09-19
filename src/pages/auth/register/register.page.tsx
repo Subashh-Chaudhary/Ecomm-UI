@@ -3,7 +3,6 @@ import registration from "../../../assets/images/registration.png";
 import {InputLabel, PasswordInput, RoleSelectComponent, TextAreaInput, TextInput} from "../../../components/common/form/TextInput.componet";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import authSvc from "../auto.service";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -30,7 +29,7 @@ const RegisterPage = () => {
   const [loading, setLoading] = useState(false);
 
 
-  const {control, handleSubmit, setValue, formState: {errors}} =useForm({
+  const {control, handleSubmit, formState: {errors}} =useForm({
     resolver: yupResolver(registerDTO)
   })
 

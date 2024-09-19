@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ErrorComponent from "../error/error.component";
-import { ProductInterface } from "../product/product.contract";
-import authSvc from "../../pages/auth/auto.service";
 import { toast } from "react-toastify";
 import BasicLoading from "../loading/loading.component";
+import { DataContext } from "../../contexts/dataContext";
+import { ProductInterface } from "../../api/contract/product.api";
 
 const ProductDetails = () => {
   // State declarations
@@ -17,25 +17,28 @@ const ProductDetails = () => {
   const [image, setImage] = useState<string >(""); // Initialize with null
   const [loading, setLoading] = useState(true);
 
-  // Fetch product list
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response: any = await authSvc.getRequest("/products");
-        setAllProduct(response.products);
-      } catch (exception) {
-        console.error("Error: ", exception);
-      }
-      finally{
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  // using context api
+  const context = useContext(DataContext);
+  const response = context?.product ?? [];
+
+  // checking the response is array or not
+  useEffect(() =>{
+    if(Array.isArray(response)){
+      setAllProduct(response);
+      setLoading(false);
+    }
+    else{
+      console.log("Response is not array");
+      
+    }
+  }, [response]);
 
   // Find product based on URL parameter
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
+  console.log(allProduct.find((p) => p.id === 91));
+  
+  console.log(id)
 
   useEffect(() => {
     if (id) {
@@ -79,6 +82,7 @@ const ProductDetails = () => {
     setErrorMsz("");
   };
 
+  //Hanler for the next image
   const nextImage = () => {
     if (product.images[index + 1]) {
       setIndex((prev) => prev + 1);
@@ -87,6 +91,7 @@ const ProductDetails = () => {
     }
   };
 
+  //Hanler for the previous image
   const prevImage = () => {
     if (index > 0) {
       setIndex((prev) => prev - 1);
@@ -95,7 +100,6 @@ const ProductDetails = () => {
     }
   };
 
-  console.log(product.images)
 
   return (
     <>

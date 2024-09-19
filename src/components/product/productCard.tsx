@@ -44,7 +44,7 @@ const ProductCard = ({ data, isInHomePage }: ProductProps) => {
         >
           <div className="relative w-full">
             <img
-              className="object-cover w-full h-36"
+              className="object-contain w-full h-36"
               src={row.images[0]}
               alt={row.title}
             />

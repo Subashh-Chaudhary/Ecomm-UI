@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo.png"
+import { FaSearch } from "react-icons/fa";
 
 export const HomeHeader = () => {
   // State to toggle the mobile menu
@@ -34,12 +35,13 @@ export const HomeHeader = () => {
           <div
           className="mt-2 flex items-center">
             <input
-            className="w-4/5 h-9 px-3 py-1" 
+            className="w-4/5 h-9 px-3 py-1 focus:ring-gray-700" 
             type="text" 
             placeholder="Search on Sajilo Cart"
             />
             <button
-            className="h-8 w-9 bg-[#FFE1D2] -translate-x-10">
+            className="h-8 w-9 bg-[#FFE1D2] rounded-sm -translate-x-10 flex justify-center items-center">
+              <FaSearch/>
             </button>
           </div>
           <div
