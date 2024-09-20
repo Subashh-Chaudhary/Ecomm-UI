@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState, ReactNode } from "react";
-import { fetchProducts, fetchAllCategories, fetchSmartphonesCategories, fetchBeautyCategories, fetchFragrancesCategories, fetchFurnitureCategories, fetchGroceriesCategories, fetchHomeDecorationCategories, fetchKitchenAccessoriesCategories, fetchLaptopsCategories, fetchMenShirtsCategories, fetchMenShoesCategories, fetchMenWatchesCategories } from "../api/apiService";
+import { fetchProducts, fetchAllCategories, fetchSmartphonesCategories, fetchBeautyCategories, fetchFragrancesCategories, fetchFurnitureCategories, fetchGroceriesCategories, fetchHomeDecorationCategories, fetchKitchenAccessoriesCategories, fetchLaptopsCategories, fetchMenShirtsCategories, fetchMenShoesCategories, fetchMenWatchesCategories, fetchMobileAccessoriesCategories, fetchMotorcycleCategories } from "../api/apiService";
 import { CategoriesInterface } from "../api/contract/categories.api";
 import { ProductInterface } from "../components/product/product.contract";
 import { DataContextType } from "./contract.context";
@@ -27,6 +27,8 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [menShirts, setMenShirts] = useState<SmartphoneInterface[]>([]);
   const [menShoes, setMenShoes] = useState<SmartphoneInterface[]>([]);
   const [menWatches, setMenWatches] = useState<SmartphoneInterface[]>([]);
+  const [mobileAccessories, setMobileAccessories] = useState<SmartphoneInterface[]>([]);
+  const [motorcycle, setMotorcycle] = useState<SmartphoneInterface[]>([]);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -136,6 +138,22 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         console.log("fetchMenWatchesCategories Failed");
       }
     };
+    const getMoblieAccessories = async () => {
+      const result = await fetchMobileAccessoriesCategories();
+      if (result) {
+        setMobileAccessories(result);
+      } else {
+        console.log("fetchMobileAccessoriesCategories Failed");
+      }
+    };
+    const getMotorcycle = async () => {
+      const result = await fetchMotorcycleCategories();
+      if (result) {
+        setMotorcycle(result);
+      } else {
+        console.log("fetchMotorcycleCategories Failed");
+      }
+    };
 
     getProduct();
     getCategory();
@@ -150,10 +168,12 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     getMenShirts();
     getMenShoes();
     getMenWatches();
+    getMoblieAccessories();
+    getMotorcycle();
   }, []);
 
   return (
-    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches}}>
+    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle}}>
       {children}
     </DataContext.Provider>
   );

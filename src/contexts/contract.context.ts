@@ -17,6 +17,8 @@ export interface DataContextType {
           menShirts: SmartphoneInterface[],
           menShoes: SmartphoneInterface[],
           menWatches: SmartphoneInterface[],
+          mobileAccessories: SmartphoneInterface[],
+          motorcycle: SmartphoneInterface[],
 }
 
 export interface DataProviderProps {

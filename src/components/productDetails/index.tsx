@@ -5,48 +5,162 @@ import { toast } from "react-toastify";
 import BasicLoading from "../loading/loading.component";
 import { DataContext } from "../../contexts/dataContext";
 import { ProductInterface } from "../../api/contract/product.api";
+import { FaAngleRight } from "react-icons/fa";
+import { SmartphoneInterface } from "../../api/contract/smartphonesCat";
 
 const ProductDetails = () => {
   // State declarations
   const [quantity, setQuantity] = useState(1);
   const [errorMsz, setErrorMsz] = useState("");
   const [allProduct, setAllProduct] = useState<ProductInterface[]>([]);
-  const [product, setProduct] = useState<ProductInterface | null>(null); // Added state for selected product
+  const [product, setProduct] = useState<ProductInterface | null>(null); 
+  // Added state for selected product
 
-  const [index, setIndex] = useState(0);
-  const [image, setImage] = useState<string >(""); // Initialize with null
-  const [loading, setLoading] = useState(true);
 
-  // using context api
+  // States for the category products
+  const [smartphone, setSmartphone] = useState<SmartphoneInterface[]>([]);
+  const [beauty, setBeauty] = useState<SmartphoneInterface[]>([]);
+  const [fragrances, setFragrances] = useState<SmartphoneInterface[]>([]);
+  const [furniture, setFurniture] = useState<SmartphoneInterface[]>([]);
+  const [groceries, setGroceries] = useState<SmartphoneInterface[]>([]);
+  const [homeDecoration, setHomeDecoration] = useState<SmartphoneInterface[]>(
+    []
+  );
+  const [kitchenAccessories, setKitchenAccessories] = useState<
+    SmartphoneInterface[]
+  >([]);
+  const [laptops, setLaptops] = useState<SmartphoneInterface[]>([]);
+  const [menShirts, setMenShirts] = useState<SmartphoneInterface[]>([]);
+  const [menShoes, setMenShoes] = useState<SmartphoneInterface[]>([]);
+  const [menWatches, setMenWatches] = useState<SmartphoneInterface[]>([]);
+  const [mobileAccessories, setMobileAccessories] = useState<SmartphoneInterface[]>([]);
+  const [motorcycle, setMotorcycle] = useState<SmartphoneInterface[]>([]);
+
+
+  // getting data through context api
   const context = useContext(DataContext);
-  const response = context?.product ?? [];
+  const {
+    product: productT = [],
+    smartphone: smartphoneT = [],
+    beauty: beautyT = [],
+    fragrances: fragrancesT = [],
+    furniture: furnitureT = [],
+    groceries: groceriesT = [],
+    homeDecoration: homeDecorationT = [],
+    kitchenAccessories: kitchenAccessoriesT = [],
+    laptops: laptopsT = [],
+    menShirts: menShirtsT = [],
+    menShoes: menShoesT = [],
+    menWatches: menWatchesT = [],
+    mobileAccessories: mobileAccessoriesT = [],
+    motorcycle: motorcycleT = [],
+  } = context || {};
+
 
   // checking the response is array or not
-  useEffect(() =>{
-    if(Array.isArray(response)){
-      setAllProduct(response);
-      setLoading(false);
-    }
-    else{
-      console.log("Response is not array");
-      
-    }
-  }, [response]);
+  useEffect(() => {
+    // Update all state variables at once
+    setAllProduct(Array.isArray(productT) ? productT : []);
+    setSmartphone(Array.isArray(smartphoneT) ? smartphoneT : []);
+    setBeauty(Array.isArray(beautyT) ? beautyT : []);
+    setFragrances(Array.isArray(fragrancesT) ? fragrancesT : []);
+    setFurniture(Array.isArray(furnitureT) ? furnitureT : []);
+    setGroceries(Array.isArray(groceriesT) ? groceriesT : []);
+    setHomeDecoration(Array.isArray(homeDecorationT) ? homeDecorationT : []);
+    setKitchenAccessories(
+      Array.isArray(kitchenAccessoriesT) ? kitchenAccessoriesT : []
+    );
+    setLaptops(Array.isArray(laptopsT) ? laptopsT : []);
+    setMenShirts(Array.isArray(menShirtsT) ? menShirtsT : []);
+    setMenShoes(Array.isArray(menShoesT) ? menShoesT : []);
+    setMenWatches(Array.isArray(menWatchesT) ? menWatchesT : []);
+    setMobileAccessories(Array.isArray(mobileAccessoriesT) ? mobileAccessoriesT : []);
+    setMotorcycle(Array.isArray(motorcycleT) ? motorcycleT : []);
+  }, [
+    smartphoneT,
+    beautyT,
+    fragrancesT,
+    furnitureT,
+    groceriesT,
+    homeDecorationT,
+    kitchenAccessoriesT,
+    laptopsT,
+    menShirtsT,
+    menShoesT,
+    menWatchesT,
+    mobileAccessories, 
+    motorcycle,
+  ]);
+
+  // states for image preview and loading
+  const [index, setIndex] = useState(0);
+  const [image, setImage] = useState<string>(""); // Initialize with null
+  const [loading, setLoading] = useState(true);
+
 
   // Find product based on URL parameter
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
-  console.log(allProduct.find((p) => p.id === 91));
-  
-  console.log(id)
+  const category = searchParams.get("category");
 
+  //finding the targeted product 
   useEffect(() => {
-    if (id) {
-      const foundProduct = allProduct.find((p) => p.id === Number(id));
-      setProduct(foundProduct || null);
-    }
+    const findProduct = ()=>{
+      if( id && category){
+        let foundProduct = null;
+
+        switch (category) {
+          case "smartphones":
+            foundProduct = smartphone.find((p) => p.id === Number(id));
+            break;
+          case "beauty":
+            foundProduct = beauty.find((p) => p.id === Number(id));
+            break;
+          case "fragrances":
+            foundProduct = fragrances.find((p) => p.id === Number(id));
+            break;
+          case "furniture":
+            foundProduct = furniture.find((p) => p.id === Number(id));
+            break;
+          case "groceries":
+            foundProduct = groceries.find((p) => p.id === Number(id));
+            break;
+          case "home-decoration":
+            foundProduct = homeDecoration.find((p) => p.id === Number(id));
+            break;
+          case "kitchen-accessories":
+            foundProduct = kitchenAccessories.find((p) => p.id === Number(id));
+            break;
+          case "laptops":
+            foundProduct = laptops.find((p) => p.id === Number(id));
+            break;
+          case "mens-shirts":
+            foundProduct = menShirts.find((p) => p.id === Number(id));
+            break;
+          case "mens-shoes":
+            foundProduct = menShoes.find((p) => p.id === Number(id));
+            break;
+          case "mens-watches":
+            foundProduct = menWatches.find((p) => p.id === Number(id));
+            break;
+          case "mobile-accessories":
+            foundProduct = mobileAccessories.find((p) => p.id === Number(id));
+            break;
+          case "motorcycle":
+            foundProduct = motorcycle.find((p) => p.id === Number(id));
+            break;
+          default:
+            console.log("Invalid category type");
+            break;
+        }
+        setProduct(foundProduct || null);
+        setLoading(false)
+      }
+    };
+    findProduct();
   }, [id, allProduct]);
 
+  console.log(product)
   // Update image state whenever index or product changes
   useEffect(() => {
     if (product && product.images[index]) {
@@ -56,11 +170,8 @@ const ProductDetails = () => {
     }
   }, [index, product]);
 
-  if(loading){
-    return (
-      <BasicLoading label="Component loading" isCenter={true}/>
-    )
-    
+  if (loading) {
+    return <BasicLoading label="Component loading" isCenter={true} />;
   }
 
   if (!product) {
@@ -87,7 +198,7 @@ const ProductDetails = () => {
     if (product.images[index + 1]) {
       setIndex((prev) => prev + 1);
     } else {
-      toast.info("It's the first one...")
+      toast.info("It's the first one...");
     }
   };
 
@@ -96,32 +207,38 @@ const ProductDetails = () => {
     if (index > 0) {
       setIndex((prev) => prev - 1);
     } else {
-      toast.info("No more image...")
+      toast.info("No more image...");
     }
   };
 
-
   return (
     <>
-      <h1 className="py-1 md:py-2 mx-3 lg:mx-28 text-md md:text-lg font-bold">
+      <h1 className="py-1 md:py-3 mx-3 lg:mx-28 text-md md:text-xl font-bold">
         Categories:
       </h1>
-      <div className="bg-gray-100 ">
-        <h2 className="pt-1 md:pt-2 mx-3 lg:mx-28 text-sm md:text-lg font-bold">
-          Product:
-        </h2>
+      <div className="bg-gray-100 pt-1 md:pt-2">
+        <div className="mx-3 lg:mx-28 flex items-center gap-1">
+          <h2 className=" text-md md:text-xl text-red-700 font-bold">{product.category}</h2>
+          <FaAngleRight />
+          <h2 className=" text-sm md:text-[16px] text-slate-600 font-bold">
+            {product.title}
+          </h2>
+        </div>
+
         <div className="flex flex-col lg:flex-row justify-center gap-4 lg:gap-12 py-6 lg:py-6">
           <div className="flex flex-col gap-2 lg:gap-8">
             <div className="w-full px-2 lg:w-[550px] lg:h-[450px]">
               <img
-                className="w-full h-full lg:hover:scale-105 transition-all ease-in-out duration-300 rounded-lg"
+                className="w-full object-contain h-full lg:hover:scale-105 transition-all ease-in-out duration-300 rounded-lg"
                 src={image}
                 alt="watch"
               />
             </div>
             <div className="flex justify-center gap-12 lg:gap-24 mt-2">
-              <div className=" w-10 h-10 grid items-center justify-center rounded-full bg-gray-800 rotate-90 shrink-0 cursor-pointer hover:bg-gray-600 duration-100 transition-all"
-              onClick={nextImage}>
+              <div
+                className=" w-10 h-10 grid items-center justify-center rounded-full bg-gray-800 rotate-90 shrink-0 cursor-pointer hover:bg-gray-600 duration-100 transition-all"
+                onClick={nextImage}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-4 fill-[#fff] inline"
@@ -135,8 +252,10 @@ const ProductDetails = () => {
                   ></path>
                 </svg>
               </div>
-              <div className="bg-gray-800 hover:bg-gray-600 w-10 h-10 grid items-center justify-center rounded-full -rotate-90 shrink-0 cursor-pointer"
-              onClick={prevImage}>
+              <div
+                className="bg-gray-800 hover:bg-gray-600 w-10 h-10 grid items-center justify-center rounded-full -rotate-90 shrink-0 cursor-pointer"
+                onClick={prevImage}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-4 fill-[#fff] inline"

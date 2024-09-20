@@ -12,6 +12,7 @@ import ErrorComponent from "../components/error/error.component";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.css"
 import { DataProvider } from "../contexts/dataContext";
+import Category from "../pages/categories/category.component";
 
 const RouterConfig = () => {
   return (
@@ -24,6 +25,7 @@ const RouterConfig = () => {
             <Route index element={<App />} />
             <Route path="cart" element={<CartPage/>} />
             <Route path="categories" element={<AllCategoriesPage />} />
+            <Route path="category" element={<Category/>} />
             <Route path="products" element={<AllProductsPage />} />
             <Route path="product" element={<ProductDetails />} />
             <Route path="contact" element={<ContactPage />} />

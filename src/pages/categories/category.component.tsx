@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import CategeriesDatails from "./categoriDetails.component";
 import { SmartphoneInterface } from "../../api/contract/smartphonesCat";
 import { DataContext } from "../../contexts/dataContext";
+import CategeriesDatails from "./categoriDetails.component";
 import { FaAngleDoubleRight } from "react-icons/fa";
+import { useSearchParams } from "react-router-dom";
+import { ProductInterface } from "../../api/contract/product.api";
 
-const AllCategoriesPage = () => {
+const Category = () => {
+  const [category, setCategory] = useState<ProductInterface[]>([]);
   const [smartphone, setSmartphone] = useState<SmartphoneInterface[]>([]);
   const [beauty, setBeauty] = useState<SmartphoneInterface[]>([]);
   const [fragrances, setFragrances] = useState<SmartphoneInterface[]>([]);
@@ -69,10 +72,65 @@ const AllCategoriesPage = () => {
     menShirtsT,
     menShoesT,
     menWatchesT,
-    mobileAccessories, 
-    motorcycle,
   ]);
 
+  const [searchParams] = useSearchParams();
+  const cat = searchParams.get("category");
+
+  useEffect(() => {
+    const findCategory = () => {
+      if (cat) {
+        switch (cat) {
+          case "beauty":
+            setCategory(beauty);
+            break;
+          case "fragrances":
+            setCategory(fragrances);
+            break;
+          case "furniture":
+            setCategory(furniture);
+            break;
+          case "groceries":
+            setCategory(groceries);
+            break;
+          case "home-decoration":
+            setCategory(homeDecoration);
+            break;
+          case "kitchen-accessories":
+            setCategory(kitchenAccessories);
+            break;
+          case "laptops":
+            setCategory(laptops);
+            break;
+          case "mens-shirts":
+            setCategory(menShirts);
+            break;
+          case "mens-shoes":
+            setCategory(menShoes);
+            break;
+          case "mens-watches":
+            setCategory(menWatches);
+            break;
+          case "mobile-accessories":
+            setCategory(mobileAccessories);
+            break;
+          case "motorcycle":
+            setCategory(motorcycle);
+            break;
+          default:
+            console.log("Invalid category type");
+            break;
+        }
+      }
+    };
+    findCategory();
+  }, [cat, smartphone, beauty, fragrances, furniture, groceries, homeDecoration, kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle]);
+
+  const title = category && category.length > 0 ? category[0].category : "";
+  console.log(category);
+  
+  console.log(title);
+  
   return (
     <>
       <section className="bg-gray-50">
@@ -81,20 +139,8 @@ const AllCategoriesPage = () => {
           <FaAngleDoubleRight />
         </div>
         <div className="w-full bg-gray-200 pb-6">
-          <div
-          className="px-28 overflow-hidden">
-            <CategeriesDatails title="Smartphone" data={smartphone} />
-            <CategeriesDatails title="Kitchen Accessories" data={kitchenAccessories} />
-            <CategeriesDatails title="Groceries" data={groceries} />
-            <CategeriesDatails title="Beauty" data={beauty} />
-            <CategeriesDatails title="Fragrances" data={fragrances} />
-            <CategeriesDatails title="Furniture" data={furniture} />
-            <CategeriesDatails title="Home Decoration" data={homeDecoration} />
-            
-            <CategeriesDatails title="Laptop" data={laptops} />
-            <CategeriesDatails title="Men Shirts" data={menShirts} />
-            <CategeriesDatails title="Men Shoes" data={menShoes} />
-            <CategeriesDatails title="Men Watches" data={menWatches} />
+          <div className="px-28 overflow-hidden">
+            <CategeriesDatails title={title} data={category} />
           </div>
         </div>
       </section>
@@ -102,4 +148,4 @@ const AllCategoriesPage = () => {
   );
 };
 
-export default AllCategoriesPage;
+export default Category;

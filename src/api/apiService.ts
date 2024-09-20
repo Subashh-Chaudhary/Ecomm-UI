@@ -76,3 +76,9 @@ export const fetchMenShoesCategories = async (): Promise<SmartphoneInterface[] |
 export const fetchMenWatchesCategories = async (): Promise<SmartphoneInterface[] | null> => {
   return await fetchCategoryData<SmartphoneInterface>("/products/category/mens-watches");
 };
+export const fetchMobileAccessoriesCategories = async (): Promise<SmartphoneInterface[] | null> => {
+  return await fetchCategoryData<SmartphoneInterface>("/products/category/mobile-accessories");
+};
+export const fetchMotorcycleCategories = async (): Promise<SmartphoneInterface[] | null> => {
+  return await fetchCategoryData<SmartphoneInterface>("/products/category/motorcycle");
+};

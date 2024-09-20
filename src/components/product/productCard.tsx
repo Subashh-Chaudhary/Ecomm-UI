@@ -33,11 +33,11 @@ const ProductCard = ({ data, isInHomePage }: ProductProps) => {
       };
     });
   }
-
+  
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
       {processedData && processedData.map((row: ProductInterface, i: number) => (
-        <NavLink key={i} to={`/product?id=${row.id}&title=${encodeURIComponent(row.title)}`}>
+        <NavLink key={i} to={`/product?id=${row.id}&category=${encodeURIComponent(row.category)}&title=${encodeURIComponent(row.title)}`}>
         
         <Card
           className="w-full sm:h-auto max-w-[150px] md:max-w-[250px] hover:shadow-2xl transition-shadow duration-300 ease-in-out"
@@ -49,7 +49,7 @@ const ProductCard = ({ data, isInHomePage }: ProductProps) => {
               alt={row.title}
             />
           </div>
-          <NavLink to={`/product?id=${row.id}&title=${encodeURIComponent(row.title)}`}>
+          <NavLink to={`/product?id=${row.id}&category=${encodeURIComponent(row.category)}&title=${encodeURIComponent(row.title)}`}>
             <h5 className="text-[14px] md:text-sm lg:text-base font-semibold tracking-tight text-gray-900 dark:text-white sm:mt-2 lg:h-10">
               {row.title}
             </h5>
