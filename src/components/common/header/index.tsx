@@ -15,6 +15,7 @@ export const HomeHeader = () => {
   // Function to refresh the page when the logo is clicked
   const handleLogoClick = () => {
     window.location.reload(); // Refresh the page
+    window.location.href = "/";
   };
 
   return (

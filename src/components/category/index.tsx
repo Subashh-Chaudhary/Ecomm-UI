@@ -71,7 +71,6 @@ const CategoryComponent = () => {
 
   const context = useContext(DataContext);
   const response = context?.category ?? [];
-  console.log(response)
   
   useEffect(() =>{
     if(Array.isArray(response)){
@@ -85,7 +84,7 @@ const CategoryComponent = () => {
 
   return (
     <>
-      <HomeTitle title="Category" />
+      <HomeTitle title="Category" url="/categories"/>
       <div className="flex gap-2 mx-2 lg:mx-28 mt-2 lg:mt-6 flex-wrap justify-center mb-5 lg:mb-13">
         <CategoryCard data={allCategory} />
       </div>

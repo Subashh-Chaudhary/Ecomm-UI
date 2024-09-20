@@ -127,9 +127,6 @@ const Category = () => {
   }, [cat, smartphone, beauty, fragrances, furniture, groceries, homeDecoration, kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle]);
 
   const title = category && category.length > 0 ? category[0].category : "";
-  console.log(category);
-  
-  console.log(title);
   
   return (
     <>
