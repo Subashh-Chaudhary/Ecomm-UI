@@ -4,7 +4,7 @@ import {InputLabel, PasswordInput, RoleSelectComponent, TextAreaInput, TextInput
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import BasicLoading from "../../../components/loading/loading.component";
 
@@ -185,9 +185,9 @@ const RegisterPage = () => {
 
                 <p className="mt-4 text-sm text-gray-500 text-center">
                   Already have an account?{" "}
-                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
                     Log in
-                  </a>
+                  </Link>
                   .
                 </p>
               </form>

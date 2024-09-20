@@ -177,12 +177,11 @@ const LoginPage = () => {
             />
 
             <div className="w-full max-w-md mx-auto xl:max-w-xl">
-              <h3 className="text-2xl font-bold text-center text-black">
-                Design your own card
+              <h3 className="text-2xl font-bold text-center text-[#F85606]">
+              Welcome to Sajilo Cart!
               </h3>
-              <p className="leading-relaxed text-center text-gray-500 mt-2.5">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis.
+              <p className="leading-relaxed text-center text-slate-500 mt-2.5">
+              Log in to explore a wide range of products tailored to your needs. From electronics to everyday essentials, Sajilo Cart makes online shopping easy.
               </p>
             </div>
           </div>
