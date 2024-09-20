@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+<h1>Sajilo Cart - Your Simplified Shopping Experience</h1>
+<h2>Working on It.......</h2>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p>Welcome to Sajilo Cart, a user-friendly e-commerce platform designed to make your online shopping experience effortless. Explore a wide range of categories, including electronics, fashion, beauty, and more, all dynamically rendered for a seamless browsing experience.</p>
 
-Currently, two official plugins are available:
+![Screenshot of Sajilo Cart](https://your-image-link-here)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h2>Technologies Used</h2>
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>TypeScript</li>
+    <li>React
+        <ul>
+            <li>React Hooks</li>
+            <li>Context API</li>
+            <li>React Router DOM</li>
+        </ul>
+    </li>
+    <li>Tech Stack
+        <ul>
+          <li>Tailwind CSS</li>
+          <li>Flowbit-react</li>
+          <li>Toastify</li>
+          <li>Axios</li>
+          <li>React Hook Form</li>
+          <li>Yup (Form Validation)</li>
+          <li>GitHub (Version Control)</li>
+         <li>DummyJSON API (for product/category data)</li>
+        </ul>
+    </li>
+  </ul>
 
-## Expanding the ESLint configuration
+  <h2>Major Features</h2>
+  <ul>
+      <li>Dynamic product listing and category rendering via DummyJSON API</li>
+      <li>Single Page Application (SPA) with React Router DOM for smooth navigation</li>
+      <li>Responsive design using Tailwind CSS and flowbit-react</li>
+      <li>Interactive components with hover effects and staggered loading animations</li>
+      <li>Centralized state management for efficient API calls</li>
+  </ul>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<h2>Credits</h2>
+<p>This project is inspired by my passion for e-commerce platforms and frontend development, with influences from tutorials and resources that helped me master React and Tailwind.</p>
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+<p>Created by <b>Subash Tharu</b>. September, 2024</p>
+<h5><i>Note: This project is still in progress......</i></h5>
