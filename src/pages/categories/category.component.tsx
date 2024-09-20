@@ -131,12 +131,12 @@ const Category = () => {
   return (
     <>
       <section className="bg-gray-50">
-        <div className="w-full lg:px-28 py-2 lg:py-4 text-sm lg:text-2xl font-bold text-slate-700 bg-slate-50 flex items-center gap-1 ">
+        <div className="w-full lg:px-28 py-2 px-2 lg:py-4 text-md lg:text-2xl font-bold text-slate-700 bg-slate-50 flex items-center gap-1 ">
           Categories
           <FaAngleDoubleRight />
         </div>
         <div className="w-full bg-gray-200 pb-6">
-          <div className="px-28 overflow-hidden">
+          <div className="lg:px-28 overflow-hidden">
             <CategeriesDatails title={title} data={category} />
           </div>
         </div>

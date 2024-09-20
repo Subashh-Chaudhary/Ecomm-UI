@@ -57,15 +57,15 @@ const ContactPage = () => {
       <section className="bg-gradient-to-r from-gray-50 to-gray-400 py-3 md:py-6">
         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold leading-tight text-gray-800 sm:text-xl lg:text-3xl">
+            <h2 className="text-xl lg:text-3xl font-bold leading-tight text-gray-800">
             Get in Touch with Sajilo Cart!
             </h2>
-            <p className="max-w-xl mx-auto text-base leading-tight text-slate-800">
+            <p className="max-w-xl mx-auto text-sm md:text-md leading-tight text-slate-800">
             Have questions or need support? We're here to help. Reach out to us for any inquiries, and we'll respond as soon as possible.
             </p>
           </div>
 
-          <div className="max-w-6xl mx-auto mt-6 overflow-hidden bg-gray-50 rounded-md shadow-md lg:mt-6">
+          <div className="max-w-6xl mx-auto mt-2 lg:mt-6 overflow-hidden bg-gray-50 rounded-md shadow-md">
             <div className="grid items-stretch grid-cols-1 lg:grid-cols-5">
               <div className="lg:col-span-3">
                 <div className="p-3 sm:p-8">
@@ -77,9 +77,9 @@ const ContactPage = () => {
                     onSubmit={handleSubmit(submitForm)}
                     className="mt-2 lg:mt-4"
                   >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:gap-x-5 md:gap-y-4">
                       <div>
-                        <div className="mt-2 relative">
+                        <div className="mt-2 gap-y-1 relative">
                           <InputLabel htmlFor="name">Full name</InputLabel>
                           <TextInput
                             name="name"
@@ -146,15 +146,15 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-100 lg:col-span-2">
+              <div className="bg-gray-100 lg:col-span-2 rounded-md">
                 <div className="h-full p-6 sm:p-10">
                   <div className="flex flex-col justify-between h-full">
                     <div>
-                      <h4 className="text-2xl font-semibold text-[#F85606]">
+                      <h4 className="text-xl lg:text-2xl font-semibold text-[#F85606]">
                         Contact info
                       </h4>
 
-                      <div className="mt-8 space-y-7">
+                      <div className="mt-4 lg:mt-8 space-y-7">
                         <div className="flex items-start">
                           <svg
                             className="flex-shrink-0 text-blue-600 w-7 h-7"
@@ -176,7 +176,7 @@ const ContactPage = () => {
                               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                             />
                           </svg>
-                          <span className="block ml-3 text-base text-gray-900">
+                          <span className="block ml-3 text-sm md:text-base text-gray-900">
                             {" "}
                             8502 Lubu Rd. Imadol, Bahundhada 98380, Nepal{" "}
                           </span>
@@ -197,7 +197,7 @@ const ContactPage = () => {
                               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                             />
                           </svg>
-                          <span className="block ml-3 text-base text-gray-900">
+                          <span className="block ml-3 text-sm md:text-base text-gray-900">
                             {" "}
                             subashtharu.info@gmail.com{" "}
                           </span>
@@ -219,7 +219,7 @@ const ContactPage = () => {
                             />
                           </svg>
                           <div className="ml-3">
-                            <span className="block text-base text-gray-900">
+                            <span className="block text-sm md:text-base text-gray-900">
                               +9779863453299
                             </span>
                             <span className="block mt-1 text-base text-gray-900">
@@ -233,7 +233,7 @@ const ContactPage = () => {
                     <div className="mt-8 lg:mt-auto">
                       <hr className="border-gray-200" />
                       <div className="flex items-center justify-between mt-7">
-                        <p className="text-lg font-semibold text-[#F85606]">
+                        <p className="text-md md:text-lg font-semibold text-[#F85606]">
                           Follow us on
                         </p>
 

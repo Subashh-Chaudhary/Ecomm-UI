@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo.png"
 import { FaSearch } from "react-icons/fa";
 
@@ -12,24 +12,20 @@ export const HomeHeader = () => {
     setMenuOpen(!menuOpen);
   };
 
-  // Function to refresh the page when the logo is clicked
-  const handleLogoClick = () => {
-    window.location.reload(); // Refresh the page
-    window.location.href = "/";
-  };
 
   return (
     <>
       <div className="bg-[#F85606] grid grid-cols-12 gap-4 h-12 lg:h-20 lg:px-28 px-4 relative">
         {/* Logo */}
-        <div className="col-span-4 flex items-center">
+        <Link 
+        to="/"
+        className="col-span-4 flex items-center">
           <img
             src={logo}
             className="h-9 w-[60px] md:w-[100px] md:h-16 cursor-pointer"
             alt="Flowbite React Logo"
-            onClick={handleLogoClick}
           />
-        </div>
+        </Link>
 
         {/* Nav Links - Hidden on small screens */}
         <div className="col-span-6 hidden lg:flex flex-col text-xl gap-1">
@@ -142,12 +138,12 @@ export const HomeHeader = () => {
             All Products
           </NavLink>
           <NavLink 
-            to="/about" 
+            to="/cart" 
             className={({ isActive }) => 
               isActive ? 'block text-slate-700 ' : 'block text-white'
             }
             onClick={() => setMenuOpen(false)}>
-            About
+            My Cart
           </NavLink>
           <NavLink 
             to="/contact" 

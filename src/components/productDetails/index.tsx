@@ -160,7 +160,6 @@ const ProductDetails = () => {
     findProduct();
   }, [id, allProduct]);
 
-  console.log(product)
   // Update image state whenever index or product changes
   useEffect(() => {
     if (product && product.images[index]) {

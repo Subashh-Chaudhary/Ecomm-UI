@@ -1,10 +1,15 @@
 import { Card } from "flowbite-react";
 import { NavLink } from "react-router-dom";
 import { ProductInterface, ProductProps } from "./product.contract";
+import { useEffect } from "react";
 
 const ProductCard = ({ data, isInHomePage }: ProductProps) => {
   // Define the maximum length for the title
   const maxLength: number = 30;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Process data to truncate titles
   let processedData: ProductInterface[];
@@ -47,6 +52,7 @@ const ProductCard = ({ data, isInHomePage }: ProductProps) => {
               className="object-contain w-full h-36"
               src={row.images[0]}
               alt={row.title}
+              loading="lazy" // This enables lazy loading
             />
           </div>
           <NavLink to={`/product?id=${row.id}&category=${encodeURIComponent(row.category)}&title=${encodeURIComponent(row.title)}`}>
@@ -75,7 +81,7 @@ const ProductCard = ({ data, isInHomePage }: ProductProps) => {
               ${row.price}
             </span>
             <NavLink
-              to={`/product?id=${row.id}&title=${encodeURIComponent(row.title)}`}
+              to={`/product?id=${row.id}&category=${encodeURIComponent(row.category)}&title=${encodeURIComponent(row.title)}`}
               className="rounded-lg bg-cyan-700 px-[6px] lg:px-2 md:px-3 py-3 md:py-2 text-[9px] md:text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
             >
               Add Cart

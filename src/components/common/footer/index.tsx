@@ -20,8 +20,6 @@ const FooterPage = () => {
             className= " w-16 h-10 lg:w-32 lg:h-24 bg-slate-600 rounded"
             src={logo} alt="" />
           </div>
-          
-
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-2 md:grid-cols-3">
             <div>
               <Footer.Title title="About" />
@@ -33,8 +31,8 @@ const FooterPage = () => {
             <div>
               <Footer.Title title="Follow us" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Github</Footer.Link>
-                <Footer.Link href="#">Discord</Footer.Link>
+                <Footer.Link href="https://github.com/Subashh-Chaudhary">Github</Footer.Link>
+                <Footer.Link href="https://www.linkedin.com/in/developer-subash/">LinkedIn</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
@@ -57,7 +55,7 @@ const FooterPage = () => {
             <Footer.Icon href="#" icon={BsFacebook} />
             <Footer.Icon href="#" icon={BsInstagram} />
             <Footer.Icon href="#" icon={BsTwitter} />
-            <Footer.Icon href="#" icon={BsGithub} />
+            <Footer.Icon href="https://github.com/Subashh-Chaudhary" icon={BsGithub} />
             <Footer.Icon href="#" icon={BsDribbble} />
           </div>
         </div>
