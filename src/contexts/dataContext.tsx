@@ -4,7 +4,6 @@ import { CategoriesInterface } from "../api/contract/categories.api";
 import { ProductInterface } from "../components/product/product.contract";
 import { DataContextType } from "./contract.context";
 import { SmartphoneInterface } from "../api/contract/smartphonesCat";
-import { getThemeMode } from "flowbite-react";
 
 // Create context with proper typing
 export const DataContext = createContext<DataContextType | null>(null);

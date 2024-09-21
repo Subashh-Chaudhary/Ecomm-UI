@@ -33,7 +33,7 @@ const RegisterPage = () => {
     resolver: yupResolver(registerDTO)
   })
 
-  const submitForm = async (data:any)=>{
+  const submitForm = async ()=>{
     try{
       setLoading(true);
      // const response:any = await authSvc.postRequest('/users/add', data);

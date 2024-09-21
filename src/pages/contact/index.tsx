@@ -41,9 +41,9 @@ const ContactPage = () => {
       setLoading(true);
       toast.success("Message sent...");
       console.log("Data: ", data);
-      // setTimeout((): void => {
-      //   navigate("/login");
-      // }, 1000);
+      setTimeout((): void => {
+        navigate("/login");
+      }, 1000);
     } catch (exception: any) {
       toast.error(exception.data.message);
     } finally {
