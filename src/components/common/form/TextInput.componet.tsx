@@ -86,19 +86,19 @@ export const PasswordInput = ({
         {...field}
         className={`block w-full p-3 text-black  ${
           errMsg ? "border-red-700 border-2" : "border-gray-200"
-        } placeholder-gray-500 transition-all duration-200 border rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600`}
+        } placeholder-gray-500 transition-all duration-200 border rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600 text-[12px] sm:text-base`}
         autoComplete={autocomplete}
         placeholder={placeholder}
       />
       <button
         type="button"
-        className="absolute right-2 lg:right-4 top-[10px] md:top:1 lg:top-2"
+        className="absolute right-2 lg:right-4 top-[16px] md:top:1 lg:top-2"
         onClick={togglePasswordVisibility}
       >
         {passwordVisible ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-gray-600"
+            className="h-4 w-4 sm:h-6 sm:w-6 text-gray-600"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -106,14 +106,14 @@ export const PasswordInput = ({
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
+              strokeWidth={4}
               d="M13.875 18.825A10.042 10.042 0 0112 19c-4.995 0-9-5.373-9-6s4.005-6 9-6 9 5.373 9 6c0 .379-.165.874-.455 1.405M15 12a3 3 0 11-6 0 3 3 0 016 0z"
             />
           </svg>
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-gray-600"
+            className="h-4 sm:h-6 w-4 sm:w-6 text-gray-600"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

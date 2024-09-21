@@ -15,7 +15,7 @@ export const HomeHeader = () => {
 
   return (
     <>
-      <div className="bg-[#F85606] grid grid-cols-12 gap-4 h-12 lg:h-20 lg:px-28 px-4 relative">
+      <div className="bg-[#F85606] sticky left-0 top-0 z-10  grid grid-cols-12 gap-4 h-12 lg:h-20 lg:px-28 px-4">
         {/* Logo */}
         <Link 
         to="/"
