@@ -29,6 +29,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [mobileAccessories, setMobileAccessories] = useState<SmartphoneInterface[]>([]);
   const [motorcycle, setMotorcycle] = useState<SmartphoneInterface[]>([]);
   const [carts, setCarts] = useState<CartItemDetails[]>([]);
+  const [cartCount, setCartCount] = useState<number>(0);
 
   const addCart = (product: ProductInterface, quantity:number) => {
     // Check if the product is already in the cart
@@ -49,18 +50,20 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         ...carts,
         {
           id: product.id,
-          name: product.brand,
+          name: product.title,
           price: product.price,
           quantity: quantity,
           totalPrice: product.price * quantity,
           image: product.thumbnail
         },
       ]);
+      setCartCount((num ) => num + 1);
     }
   };
 
   const deleteCart = (id: number) => {
     setCarts(carts.filter((item) => item.id !== id));
+    setCartCount((num ) => num - 1);
   };
 
   useEffect(() => {
@@ -206,7 +209,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle, carts, addCart, deleteCart}}>
+    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle, carts, addCart, deleteCart, cartCount}}>
       {children}
     </DataContext.Provider>
   );

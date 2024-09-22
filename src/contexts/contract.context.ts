@@ -22,6 +22,7 @@ export interface DataContextType {
   carts: CartItemDetails[],
   addCart: (product: ProductInterface, quantity:number) => void;
   deleteCart: (id: number) => void;
+  cartCount: number,
 }
 
 export interface DataProviderProps {

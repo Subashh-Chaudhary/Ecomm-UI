@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ErrorComponent from "../error/error.component";
 import { toast } from "react-toastify";
 import BasicLoading from "../loading/loading.component";
@@ -161,17 +161,18 @@ const ProductDetails = () => {
   }, [id, allProduct]);
 
   // using context for the cart component
-  
+  const navigate = useNavigate();
     const handleAddToCart = () => {
       if (product && context && context.addCart) {
         context.addCart(product, quantity);
-        console.log(product)
-        console.log(`${product.brand} added to cart!`);
-        if(context.carts){
-          console.log(context.carts);
-        }
+        toast.success("Product added to the cart");
+        setTimeout(()=>{
+          navigate('/cart');
+        }, 700)
+        
       }
     };
+
 
   // Update image state whenever index or product changes
   useEffect(() => {
@@ -365,7 +366,7 @@ const ProductDetails = () => {
             <div className="flex flex-wrap gap-4 mt-8">
               <button
                 type="button"
-                className="min-w-full py-2.5 border border-gray-800 bg-transparent hover:bg-gray-50 text-gray-800 text-sm lg:text-md font-semibold rounded"
+                className="min-w-full py-2.5 border border-gray-800 bg-transparent text-gray-800 text-sm lg:text-md font-semibold rounded transition-all duration-300 ease-in-out transform hover:bg-gray-50 hover:scale-105 active:scale-95 active:bg-gray-200"
                 onClick={handleAddToCart}
               >
                 Add to cart
