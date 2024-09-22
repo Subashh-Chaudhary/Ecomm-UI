@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState, ReactNode } from "react";
 import { fetchProducts, fetchAllCategories, fetchSmartphonesCategories, fetchBeautyCategories, fetchFragrancesCategories, fetchFurnitureCategories, fetchGroceriesCategories, fetchHomeDecorationCategories, fetchKitchenAccessoriesCategories, fetchLaptopsCategories, fetchMenShirtsCategories, fetchMenShoesCategories, fetchMenWatchesCategories, fetchMobileAccessoriesCategories, fetchMotorcycleCategories } from "../api/apiService";
 import { CategoriesInterface } from "../api/contract/categories.api";
 import { ProductInterface } from "../components/product/product.contract";
-import { DataContextType } from "./contract.context";
+import { CartItemDetails, DataContextType } from "./contract.context";
 import { SmartphoneInterface } from "../api/contract/smartphonesCat";
 
 // Create context with proper typing
@@ -28,6 +28,40 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [menWatches, setMenWatches] = useState<SmartphoneInterface[]>([]);
   const [mobileAccessories, setMobileAccessories] = useState<SmartphoneInterface[]>([]);
   const [motorcycle, setMotorcycle] = useState<SmartphoneInterface[]>([]);
+  const [carts, setCarts] = useState<CartItemDetails[]>([]);
+
+  const addCart = (product: ProductInterface, quantity:number) => {
+    // Check if the product is already in the cart
+    const existingItem = carts.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      // Update the quantity if the item is already in the cart
+      setCarts(
+        carts.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
+            : item
+        )
+      );
+    } else {
+      // Add the product to the cart if it's not there
+      setCarts([
+        ...carts,
+        {
+          id: product.id,
+          name: product.brand,
+          price: product.price,
+          quantity: quantity,
+          totalPrice: product.price * quantity,
+          image: product.thumbnail
+        },
+      ]);
+    }
+  };
+
+  const deleteCart = (id: number) => {
+    setCarts(carts.filter((item) => item.id !== id));
+  };
 
   useEffect(() => {
     const getProduct = async () => {
@@ -172,7 +206,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle}}>
+    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle, carts, addCart, deleteCart}}>
       {children}
     </DataContext.Provider>
   );

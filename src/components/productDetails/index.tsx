@@ -160,6 +160,19 @@ const ProductDetails = () => {
     findProduct();
   }, [id, allProduct]);
 
+  // using context for the cart component
+  
+    const handleAddToCart = () => {
+      if (product && context && context.addCart) {
+        context.addCart(product, quantity);
+        console.log(product)
+        console.log(`${product.brand} added to cart!`);
+        if(context.carts){
+          console.log(context.carts);
+        }
+      }
+    };
+
   // Update image state whenever index or product changes
   useEffect(() => {
     if (product && product.images[index]) {
@@ -353,6 +366,7 @@ const ProductDetails = () => {
               <button
                 type="button"
                 className="min-w-full py-2.5 border border-gray-800 bg-transparent hover:bg-gray-50 text-gray-800 text-sm lg:text-md font-semibold rounded"
+                onClick={handleAddToCart}
               >
                 Add to cart
               </button>
