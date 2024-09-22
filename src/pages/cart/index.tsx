@@ -57,7 +57,7 @@
                           key={item.id}
                           className="my-5 grid grid-cols-12 items-center"
                         >
-                          <div className="col-span-5 sm:col-span-6 flex items-center gap-1 sm:gap-3">
+                          <div className="col-span-5 sm:col-span-6 flex items-center sm:gap-3">
                             <div className="h-16 w-16 md:w-24 md:h-24 overflow-hidden">
                               <img src={item.image} alt="" />
                             </div>
@@ -74,20 +74,20 @@
                             </div>
                           </div>
                           <div className="col-span-2 text-[11px] sm:text-sm font-bold">
-                            <h3>${item.price}</h3>
+                            <h3>${item.price.toFixed(2)}</h3>
                           </div>
                           <div className="col-span-3 sm:col-span-2 text-[11px] sm:text-sm font-bold">
                             <h3>{item.quantity}</h3>
                           </div>
                           <div className="col-span-2 text-[11px] sm:text-sm font-bold">
-                            <h3>{item.totalPrice}</h3>
+                            <h3>{item.totalPrice.toFixed(2)}</h3>
                           </div>
                         </div>
                         <hr />
                       </>
                     ))}
 
-                  <div className="my-6  flex flex-col gap-1 items-end mr-5">
+                  <div className="my-6  flex flex-col gap-1 items-end mr-2.5 sm:mr-5">
                     <div className="font-bold bg-white text-sm md:text-xl">
                       Grand Total: $
                       {context &&

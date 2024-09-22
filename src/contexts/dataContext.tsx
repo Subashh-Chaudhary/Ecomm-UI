@@ -40,7 +40,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       setCarts(
         carts.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
+            ? { ...item, quantity: item.quantity + quantity, totalPrice: ((item.quantity + quantity) * item.price) }
             : item
         )
       );
