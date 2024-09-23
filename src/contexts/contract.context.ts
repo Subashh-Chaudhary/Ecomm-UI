@@ -23,6 +23,10 @@ export interface DataContextType {
   addCart: (product: ProductInterface, quantity:number) => void;
   deleteCart: (id: number) => void;
   cartCount: number,
+  users: UserInterface[],
+  addUser: (user: UserInterface) => void;
+  userExist: string,
+
 }
 
 export interface DataProviderProps {
@@ -36,4 +40,15 @@ export interface CartItemDetails {
   price: number;
   totalPrice: number;
   image: string;
+}
+
+export interface UserInterface{
+  name: string,
+  phone: string,
+  email: string,
+  password: string,
+  confirmPassword ?: string,
+  address: string,
+  role: string,
+  image ?: string,
 }

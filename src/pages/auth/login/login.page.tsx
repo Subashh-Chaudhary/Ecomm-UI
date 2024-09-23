@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { NavLink, useNavigate } from "react-router-dom";
 import BasicLoading from "../../../components/loading/loading.component";
+import { UserInterface } from "../../../contexts/contract.context";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
@@ -31,16 +32,25 @@ const LoginPage = () => {
     resolver: yupResolver(registerDTO),
   });
 
-  const submitForm = (data:any) => {
+  const storedUsers = localStorage.getItem("users");
+  const users = storedUsers ? JSON.parse(storedUsers) : [];
+  
+
+  const submitForm = (data: any) => {
     try {
       // TODO: POST-API call
 
       setLoading(true);
-      toast.success("You are logged in...");
-      console.log("Data: ", data);
-      setTimeout((): void => {
-        navigate("/");
-      }, 1000);
+      const userFound = users.find((user:UserInterface) => user.email === data.email && user.password === data.password);
+      if (userFound) {
+        toast.success(`${userFound.name}, You're logged in...`);
+        setTimeout((): void => {
+          navigate("/");
+        }, 1000);
+      }
+      else{
+        toast.warn(`Incorrect entry...`);
+      }
     } catch (exception) {
       console.error(exception);
     } finally {
@@ -120,11 +130,13 @@ const LoginPage = () => {
                   <button
                     type="submit"
                     className="inline-flex items-center justify-center w-full py-2 md:py-3 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700"
-                    disabled = {loading}
-                    >
-                      { 
-                      loading ? <BasicLoading label="Account Logging..."/> : 'Log in'
-                    }
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <BasicLoading label="Account Logging..." />
+                    ) : (
+                      "Log in"
+                    )}
                   </button>
                 </div>
               </div>
@@ -151,7 +163,6 @@ const LoginPage = () => {
               <button
                 type="button"
                 className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
-                
               >
                 <div className="absolute inset-y-0 left-0 p-4">
                   <svg
@@ -178,10 +189,12 @@ const LoginPage = () => {
 
             <div className="w-full max-w-md mx-auto xl:max-w-xl">
               <h3 className="text-2xl font-bold text-center text-[#F85606]">
-              Welcome to Sajilo Cart!
+                Welcome to Sajilo Cart!
               </h3>
               <p className="leading-relaxed text-center text-slate-500 mt-2.5">
-              Log in to explore a wide range of products tailored to your needs. From electronics to everyday essentials, Sajilo Cart makes online shopping easy.
+                Log in to explore a wide range of products tailored to your
+                needs. From electronics to everyday essentials, Sajilo Cart
+                makes online shopping easy.
               </p>
             </div>
           </div>

@@ -2,8 +2,9 @@ import React, { createContext, useEffect, useState, ReactNode } from "react";
 import { fetchProducts, fetchAllCategories, fetchSmartphonesCategories, fetchBeautyCategories, fetchFragrancesCategories, fetchFurnitureCategories, fetchGroceriesCategories, fetchHomeDecorationCategories, fetchKitchenAccessoriesCategories, fetchLaptopsCategories, fetchMenShirtsCategories, fetchMenShoesCategories, fetchMenWatchesCategories, fetchMobileAccessoriesCategories, fetchMotorcycleCategories } from "../api/apiService";
 import { CategoriesInterface } from "../api/contract/categories.api";
 import { ProductInterface } from "../components/product/product.contract";
-import { CartItemDetails, DataContextType } from "./contract.context";
+import { CartItemDetails, DataContextType, UserInterface } from "./contract.context";
 import { SmartphoneInterface } from "../api/contract/smartphonesCat";
+import { toast } from "react-toastify";
 
 // Create context with proper typing
 export const DataContext = createContext<DataContextType | null>(null);
@@ -30,7 +31,33 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [motorcycle, setMotorcycle] = useState<SmartphoneInterface[]>([]);
   const [carts, setCarts] = useState<CartItemDetails[]>([]);
   const [cartCount, setCartCount] = useState<number>(0);
+  const [users, setUsers] = useState<UserInterface[]>([]);
+  const [userExist, setUserExist] = useState("");
 
+  const addUser = (user: UserInterface) => {
+    const existingUser = users.find((item) => item.email === user.email);
+
+    if(existingUser){
+      setUserExist("User already exists");
+      toast.info("User already exists! try to login"); // Show toast immediately
+    }
+    else
+    {
+      setUserExist("");
+      setUsers((prevUsers) => [
+        ...prevUsers, // spread the existing users
+        {
+          name: user.name,
+          phone: user.phone,
+          email: user.email,
+          password: user.password,
+          address: user.address, // Corrected from user.password to user.address
+          role: user.role,
+        },
+      ]);
+      toast.success("Account created successfully...");
+    }
+  }
   const addCart = (product: ProductInterface, quantity:number) => {
     // Check if the product is already in the cart
     const existingItem = carts.find((item) => item.id === product.id);
@@ -209,7 +236,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle, carts, addCart, deleteCart, cartCount}}>
+    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle, carts, addCart, deleteCart, cartCount, users, addUser, userExist}}>
       {children}
     </DataContext.Provider>
   );
