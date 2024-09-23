@@ -40,7 +40,7 @@ const ProductCard = ({ data, isInHomePage }: ProductProps) => {
   }
   
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6">
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
       {processedData && processedData.map((row: ProductInterface, i: number) => (
         <NavLink key={i} to={`/product?id=${row.id}&category=${encodeURIComponent(row.category)}&title=${encodeURIComponent(row.title)}`}>
         
