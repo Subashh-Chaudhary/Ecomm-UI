@@ -163,13 +163,18 @@ const ProductDetails = () => {
   // using context for the cart component
   const navigate = useNavigate();
     const handleAddToCart = () => {
-      if (product && context && context.addCart) {
-        context.addCart(product, quantity);
-        toast.success("Product added to the cart");
-        setTimeout(()=>{
-          navigate('/cart');
-        }, 700)
-        
+      if(context?.isLoggedin){
+        if (product && context && context.addCart) {
+          context.addCart(product, quantity);
+          toast.success("Product added to the cart");
+          setTimeout(()=>{
+            navigate('/cart');
+          }, 700)
+        }
+      }
+      else{
+        toast.info("Please login at first...")
+        navigate("/login");
       }
     };
 

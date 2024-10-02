@@ -26,7 +26,8 @@ export interface DataContextType {
   users: UserInterface[],
   addUser: (user: UserInterface) => void;
   userExist: string,
-
+  isLoggedin: boolean,
+  handleStatusChange: () => void;
 }
 
 export interface DataProviderProps {

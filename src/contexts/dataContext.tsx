@@ -33,6 +33,11 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [cartCount, setCartCount] = useState<number>(0);
   const [users, setUsers] = useState<UserInterface[]>([]);
   const [userExist, setUserExist] = useState("");
+  const [isLoggedin, setIsLoggedin] = useState(false);
+
+  const handleStatusChange = () =>{
+    setIsLoggedin(prev => !prev);
+  }
 
   const addUser = (user: UserInterface) => {
     const existingUser = users.find((item) => item.email === user.email);
@@ -236,7 +241,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle, carts, addCart, deleteCart, cartCount, users, addUser, userExist}}>
+    <DataContext.Provider value={{ product, category, smartphone, beauty, fragrances, furniture, groceries, homeDecoration , kitchenAccessories, laptops, menShirts, menShoes, menWatches, mobileAccessories, motorcycle, carts, addCart, deleteCart, cartCount, users, addUser, userExist, isLoggedin, handleStatusChange}}>
       {children}
     </DataContext.Provider>
   );

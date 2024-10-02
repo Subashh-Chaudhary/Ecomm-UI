@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   PasswordInput,
   TextInput,
@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { NavLink, useNavigate } from "react-router-dom";
 import BasicLoading from "../../../components/loading/loading.component";
 import { UserInterface } from "../../../contexts/contract.context";
+import { DataContext } from "../../../contexts/dataContext";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,8 @@ const LoginPage = () => {
 
   const storedUsers = localStorage.getItem("users");
   const users = storedUsers ? JSON.parse(storedUsers) : [];
+  const context = useContext(DataContext);
+
   
 
   const submitForm = (data: any) => {
@@ -43,7 +46,12 @@ const LoginPage = () => {
       setLoading(true);
       const userFound = users.find((user:UserInterface) => user.email === data.email && user.password === data.password);
       if (userFound) {
-        toast.success(`${userFound.name}, You're logged in...`);
+        if(context?.handleStatusChange){
+          context.handleStatusChange();
+        }
+        const fullname = userFound.name;
+        const firstname = fullname.substring(0, fullname.indexOf(" "));
+        toast.success(`${firstname}, You're logged in...`);
         setTimeout((): void => {
           navigate("/");
         }, 1000);
