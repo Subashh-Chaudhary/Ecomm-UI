@@ -9,7 +9,7 @@ export const HomeHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const context = useContext(DataContext);
-  const handleChange = context?.handleStatusChange ;
+  const handleChange = context?.handleStatusChange;
 
   // Function to toggle the menu
   const toggleMenu = () => {
@@ -98,8 +98,11 @@ export const HomeHeader = () => {
         <div className="col-span-2 justify-end mr-4 hidden lg:flex flex-row gap-8 text-md items-center">
           {context?.isLoggedin ? (
             <div
-            className="text-gray-50 cursor-pointer hover:text-orange-200"
-            onClick={handleChange}>Logout </div>
+              className="text-gray-50 cursor-pointer hover:text-orange-200"
+              onClick={handleChange}
+            >
+              Logout{" "}
+            </div>
           ) : (
             <>
               <NavLink
@@ -185,24 +188,36 @@ export const HomeHeader = () => {
           >
             Contact
           </NavLink>
-          <NavLink
-            to="/register"
-            className={({ isActive }) =>
-              isActive ? "block text-slate-700 " : "block text-white"
-            }
-            onClick={() => setMenuOpen(false)}
+          {context?.isLoggedin ? (
+            <div
+            className="text-gray-50 cursor-pointer hover:text-orange-200"
+            onClick={handleChange}
           >
-            Register
-          </NavLink>
-          <NavLink
-            to="/login"
-            className={({ isActive }) =>
-              isActive ? "block text-slate-700 " : "block text-white"
-            }
-            onClick={() => setMenuOpen(false)}
-          >
-            Login
-          </NavLink>
+            Logout{" "}</div>
+          ) : (
+            <>
+              {" "}
+              <NavLink
+                to="/register"
+                className={({ isActive }) =>
+                  isActive ? "block text-slate-700 " : "block text-white"
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                Register
+              </NavLink>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive ? "block text-slate-700 " : "block text-white"
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                Login
+              </NavLink>
+            </>
+          )}
+
           <div className="absolute w-4/5 bottom-20 left-3 border border-white"></div>
           <img
             className="absolute w-16 h-12 bottom-24 left-9"
